@@ -8,8 +8,9 @@ chsh -s $(which zsh)
 
 rm -f $HOME/.zshrc
 
+apt-get update
 apt-get install -y \
-    ripgrep fzf
+    ripgrep fzf python3.9 python3-pip
 
 # Install NeoVim Stable
 wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
