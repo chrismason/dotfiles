@@ -10,7 +10,13 @@ rm -f $HOME/.zshrc
 
 apt-get update
 apt-get install -y \
-    ripgrep fzf python3.9 python3-pip
+    ripgrep fzf fontconfig
+
+# Install fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+unzip FiraCode.zip -d ~/.local/share/fonts
+fc-cache -fv
+rm FiraCode.zip
 
 # Install NeoVim Stable
 wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
@@ -23,3 +29,4 @@ ln -s $(pwd)/zshrc $HOME/.zshrc
 ln -s $(pwd)/config/nvim $HOME/.config/nvim
 
 nvim +'PlugInstall --sync' +qa
+pip3 install pynvim
