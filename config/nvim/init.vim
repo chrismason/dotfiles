@@ -1,12 +1,12 @@
-syntax on
-let mapleader=" "
-
 set wildmode=longest,list,full
 set wildmenu
 " Ignore files
 set wildignore+=**/node_modules/*
 set wildignore+=**/.git/*
 
+syntax on
+
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 call plug#begin('~/.vim/plugged')
 
 " lsp plugins
@@ -16,6 +16,10 @@ Plug 'glepnir/lspsaga.nvim'
 
 " Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Debugger
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
 
 " Other
 Plug 'darrikonn/vim-gofmt'
@@ -32,12 +36,11 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Colors
-Plug 'flazz/vim-colorschemes'
-Plug 'chriskempson/base16-vim'
-Plug 'navarasu/onedark.vim'
+Plug 'bluz71/vim-moonfly-colors'
 
 " Statusline
-Plug 'vim-airline/vim-airline'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 lua require('plugins')
@@ -47,11 +50,11 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
+let mapleader=" "
 
-colorscheme onedark
+colorscheme moonfly
 
 " key mappings
-nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 nnoremap <leader>d "_d
@@ -63,6 +66,18 @@ vnoremap <leader>y "+y
 vnoremap <leader>d "_d
 
 inoremap <C-c> <esc>
+
+fun! EmptyRegisters()
+    let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+    for r in regs
+        call setreg(r, [])
+    endfor
+endfun
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout=40})
+augroup END
 
 function! StripTrailingWhitespace()
   let save_cursor = getpos(".")

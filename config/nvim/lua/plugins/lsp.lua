@@ -1,3 +1,6 @@
+local pid = vim.fn.getpid()
+local omnisharp_bin = "/Users/chris/.omnisharp/run"
+
 local function on_attach()
 end
 
@@ -16,4 +19,9 @@ require'lspconfig'.gopls.setup{
 	      staticcheck = true,
          },
      },
+}
+
+require'lspconfig'.omnisharp.setup{
+    on_attach=on_attach,
+    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
 }
