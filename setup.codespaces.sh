@@ -10,7 +10,7 @@ rm -f $HOME/.zshrc
 
 apt-get update
 apt-get install -y \
-    ripgrep fzf fontconfig
+    ripgrep fzf fontconfig fuse
 
 # Install fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip

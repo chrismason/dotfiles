@@ -58,6 +58,7 @@ colorscheme moonfly
 nnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 nnoremap <leader>d "_d
+nnoremap <nowait><silent> <C-c> :noh<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
