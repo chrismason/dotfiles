@@ -1,5 +1,7 @@
 require('plugins.telescope')
 require('plugins.lsp')
+require('plugins.cmp')
+require('plugins.autopairs')
 require('plugins.lualine')
 
 P = function(v)

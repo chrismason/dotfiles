@@ -17,6 +17,7 @@ set termguicolors
 set scrolloff=8
 set signcolumn
 set backspace=indent,eol,start
+set completeopt=menu,menuone,noselect
 
 set mouse=a
 set clipboard=unnamed
