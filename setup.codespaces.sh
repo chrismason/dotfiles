@@ -11,7 +11,7 @@ rm -f $HOME/.zshrc
 sudo apt-add-repository -y ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install -y \
-    ripgrep fzf fontconfig fuse python3-pip neovim
+    ripgrep fzf fontconfig python3-pip neovim
 
 # Install fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
@@ -24,6 +24,7 @@ rm FiraCode.zip
 ln -s $(pwd)/tmux.conf $HOME/.tmux.conf
 ln -s $(pwd)/aliases.zsh $HOME/.aliases.zsh
 ln -s $(pwd)/zshrc $HOME/.zshrc
+mkdir -p $HOME/.config
 ln -s $(pwd)/config/nvim $HOME/.config/nvim
 
 nvim +'PlugInstall --sync' +qa
