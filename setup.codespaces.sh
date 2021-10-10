@@ -8,6 +8,7 @@ sudo chsh -s $(which zsh)
 
 rm -f $HOME/.zshrc
 
+sudo apt-add-repository -y ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install -y \
     ripgrep fzf fontconfig fuse python3-pip neovim
@@ -19,11 +20,7 @@ unzip FiraCode.zip -d ~HOME/.local/share/fonts
 fc-cache -fv
 rm FiraCode.zip
 
-# Install NeoVim Stable
-# wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-# chmod u+x nvim.appimage
-# sudo mv nvim.appimage /usr/local/bin/nvim
-
+# Setup config files
 ln -s $(pwd)/tmux.conf $HOME/.tmux.conf
 ln -s $(pwd)/aliases.zsh $HOME/.aliases.zsh
 ln -s $(pwd)/zshrc $HOME/.zshrc
