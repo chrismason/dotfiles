@@ -16,7 +16,7 @@ sudo apt-get install -y \
 # Install fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
 mkdir -p $HOME/.local/share/fonts
-unzip FiraCode.zip -d ~HOME/.local/share/fonts
+unzip FiraCode.zip -d $HOME/.local/share/fonts
 fc-cache -fv
 rm FiraCode.zip
 
