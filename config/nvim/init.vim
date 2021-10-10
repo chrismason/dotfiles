@@ -61,6 +61,7 @@ nnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 nnoremap <leader>d "_d
 nnoremap <nowait><silent> <C-c> :noh<CR>
+nnoremap <leader>pv :Ex<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -89,3 +90,8 @@ function! StripTrailingWhitespace()
 endfunction
 
 autocmd BufWritePre *.rake,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.html,*.xml,*.erb,*.md call StripTrailingWhitespace()
+
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
