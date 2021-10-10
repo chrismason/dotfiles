@@ -11,13 +11,10 @@ call plug#begin('~/.vim/plugged')
 
 " lsp plugins
 Plug 'neovim/nvim-lspconfig'
-" Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/nvim-cmp'
-" Plug 'glepnir/lspsaga.nvim'
-Plug 'windwp/nvim-autopairs'
 
 " Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -32,7 +29,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
+Plug 'windwp/nvim-autopairs'
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
