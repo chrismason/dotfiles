@@ -10,7 +10,7 @@ rm -f $HOME/.zshrc
 
 sudo apt-get update
 sudo apt-get install -y \
-    ripgrep fzf fontconfig fuse python-pip3 neovim
+    ripgrep fzf fontconfig fuse python3-pip neovim
 
 # Install fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
