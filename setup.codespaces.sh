@@ -4,7 +4,7 @@ exec > >(tee -i $HOME/dotfiles_install.log)
 exec 2>&1
 set -x
 
-sudo chsh -s $(which zsh)
+sudo chsh -s "$(which zsh)" "$(whoami)"
 
 rm -f $HOME/.zshrc
 
