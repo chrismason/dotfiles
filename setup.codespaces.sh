@@ -27,5 +27,5 @@ ln -s $(pwd)/zshrc $HOME/.zshrc
 mkdir -p $HOME/.config
 ln -s $(pwd)/config/nvim $HOME/.config/nvim
 
-nvim +'PlugInstall --sync' +qa
+# nvim +'PlugInstall --sync' +qa
 pip3 install pynvim
