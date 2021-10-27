@@ -8,17 +8,23 @@ sudo chsh -s "$(which zsh)" "$(whoami)"
 
 rm -f $HOME/.zshrc
 
-sudo apt-add-repository -y ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install -y \
-    ripgrep fzf fontconfig python3-pip neovim
+    ripgrep fzf fontconfig python3-pip fuse
+
+sudo modprobe fuse
+sudo groupadd fuse
+sudo usermod -a -G fuse "$(whoami)"
+wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/local/bin/nvim
+
+mkdir -p $HOME/.config
 
 # Setup config files
 ln -s $(pwd)/tmux.conf $HOME/.tmux.conf
 ln -s $(pwd)/aliases.zsh $HOME/.aliases.zsh
 ln -s $(pwd)/zshrc $HOME/.zshrc
-mkdir -p $HOME/.config
 ln -s $(pwd)/config/nvim $HOME/.config/nvim
 
-# nvim +'PlugInstall --sync' +qa
 pip3 install pynvim
