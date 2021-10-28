@@ -8,16 +8,10 @@ sudo chsh -s "$(which zsh)" "$(whoami)"
 
 rm -f $HOME/.zshrc
 
+sudo apt-add-repository -y ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install -y \
-    ripgrep fzf fontconfig python3-pip fuse
-
-sudo modprobe fuse
-sudo groupadd fuse
-sudo usermod -a -G fuse "$(whoami)"
-wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-sudo mv nvim.appimage /usr/local/bin/nvim
+    ripgrep fzf fontconfig python3-pip neovim
 
 mkdir -p $HOME/.config
 
