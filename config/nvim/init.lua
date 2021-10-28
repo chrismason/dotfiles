@@ -1,0 +1,6 @@
+require('config.pluginsInit')
+require('config.compiled')
+require('config.mappings')
+require('config.core.file-explorer')
+require('config.core.testing')
+require('config.editor')
