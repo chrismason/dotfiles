@@ -114,6 +114,14 @@ return packer.startup(function ()
     end,
   })
 
+  
+  use({
+    'vim-test/vim-test',
+    requires = {
+      'tpope/vim-dispatch',
+    },
+  })
+
   if config_packer.first_install then
     packer.sync()
   end
