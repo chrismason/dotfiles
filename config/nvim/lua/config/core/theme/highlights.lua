@@ -28,6 +28,19 @@ function M.init()
 
   highlight('CmpItemAbbrDeprecated', 'None', colors.warn)
 
+  highlight('NotifyINFOBorder', nil, colors.hint)
+  highlight('NotifyINFOTitle', nil, colors.hint)
+  highlight('NotifyINFOIcon', nil, colors.hint)
+  highlight('NotifyWARNBorder', nil, colors.warn)
+  highlight('NotifyWARNTitle', nil, colors.warn)
+  highlight('NotifyWARNIcon', nil, colors.warn)
+  highlight('NotifyERRORBorder', nil, colors.error)
+  highlight('NotifyERRORTitle', nil, colors.error)
+  highlight('NotifyERRORIcon', nil, colors.error)
+  highlight('NotifyTRACEBorder', nil, colors.trace)
+  highlight('NotifyTRACETitle', nil, colors.trace)
+  highlight('NotifyTRACEIcon', nil, colors.trace)
+
   vim.cmd([[
     highlight clear NormalFloat
     highlight link NormalFloat Normal

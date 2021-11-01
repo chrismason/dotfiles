@@ -9,7 +9,7 @@ map('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
 map('n', '<leader>gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>', opts)
 map('n', '<leader>gt', '<cmd>lua require("telescope.builtin").lsp_type_definitions()<cr>', opts)
 map('n', '<leader>gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', opts)
-map('n', '<leader>gn', '<cmd>lua require("cosmic.core.theme.ui").rename()<cr>', opts)
+map('n', '<leader>gn', '<cmd>lua require("config.core.theme.ui").rename()<cr>', opts)
 
 -- diagnostics
 map('n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
