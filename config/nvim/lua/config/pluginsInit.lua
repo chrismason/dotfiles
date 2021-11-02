@@ -89,7 +89,7 @@ return packer.startup(function ()
     config = function()
       require('config.core.navigation')
     end,
-    event = 'BufRead',
+    event = 'VimEnter',
   })
 
   use({
@@ -114,7 +114,7 @@ return packer.startup(function ()
     end,
   })
 
-  
+
   use({
     'vim-test/vim-test',
     requires = {
