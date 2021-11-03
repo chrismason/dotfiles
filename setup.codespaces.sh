@@ -16,6 +16,7 @@ sudo apt-get install -y \
 mkdir -p $HOME/.config
 
 # Setup config files
+ln -s $(pwd)/gitconfig $HOME/.gitconfig
 ln -s $(pwd)/tmux.conf $HOME/.tmux.conf
 ln -s $(pwd)/aliases.zsh $HOME/.aliases.zsh
 ln -s $(pwd)/zshrc $HOME/.zshrc

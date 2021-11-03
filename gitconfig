@@ -1,0 +1,22 @@
+[user]
+  name = Chris Mason
+  email = 6392972+chrismason@users.noreply.github.com
+  signingkey = 26A6331276B0DA86
+[core]
+  editor = nvim
+[commit]
+  gpgsign = true
+[github]
+  user = chrismason
+[push]
+  default = current
+[http]
+  sslVerify = true
+[pull]
+  rebase = false
+[remote "origin"]
+  prune = true
+[gpg]
+  program = /usr/local/bin/gpg
+[init]
+  defaultBranch = main
