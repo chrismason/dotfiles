@@ -10,7 +10,8 @@ require('nvim-treesitter.configs').setup({
     'json',
     'scss',
     'go',
-    'yaml'
+    'yaml',
+    'c_sharp'
   },
   highlight = {
     enable = true,
@@ -27,6 +28,5 @@ require('nvim-treesitter.configs').setup({
   },
   refactor = {
     highlight_definitions = { enable = true },
-    -- highlight_current_scope = { enable = true },
   },
 })
