@@ -106,4 +106,11 @@ return require('packer').startup(function(use)
     end,
   })
 
+  use ({
+    'theprimeagen/harpoon',
+    config = function()
+      require 'core.plugins.harpoon'
+    end,
+  })
+
 end)
