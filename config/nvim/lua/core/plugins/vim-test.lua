@@ -1,4 +1,4 @@
-local map = require('config.utils').map
+local map = require('core.utils').map
 local g = vim.g
 
 local function setup_mappings()
