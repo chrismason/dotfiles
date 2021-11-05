@@ -88,6 +88,9 @@ return require('packer').startup(function(use)
     requires = {
       'tpope/vim-dispatch',
     },
+    config = function()
+      require 'core.plugins.vim-test'
+    end,
   })
 
   use({
