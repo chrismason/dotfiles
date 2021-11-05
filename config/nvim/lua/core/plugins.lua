@@ -96,4 +96,11 @@ return require('packer').startup(function(use)
     cmd = 'Git',
   })
 
+  use ({
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require 'core.plugins.lualine'
+    end,
+  })
+
 end)

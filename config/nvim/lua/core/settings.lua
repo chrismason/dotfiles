@@ -27,6 +27,7 @@ opt.mouse = 'a'
 opt.incsearch = true
 opt.cursorline = true
 opt.backspace = { 'indent', 'eol', 'start' }
+opt.showmode = false
 
 opt.swapfile = false
 opt.backup = false
