@@ -19,6 +19,8 @@ map('n', '[n', [[:call search('^\(@@ .* @@\|[<=>|]\{7}[<=>|]\@!\)', 'bW')<cr>]],
 
 map('n', '<C-c>', ':nohlsearch<cr>', silent)
 
+map('n', '<C-e>', ':Ex<cr>')
+
 -- insert mode
 map('i', '<C-c>', '<esc>')
 
