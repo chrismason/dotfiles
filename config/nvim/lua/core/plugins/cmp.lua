@@ -1,10 +1,17 @@
 local cmp = require('cmp')
+local autopairs = require 'nvim-autopairs'
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local luasnip = require('luasnip')
 
 vim.cmd([[
   autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 ]])
+
+autopairs.setup {
+  check_ts = true,
+  enable_moveright = true,
+  disable_filetype = { 'TelescopePrompt', 'vim' },
+}
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -79,10 +86,6 @@ cmp.setup({
       },
     }),
   },
-})
-
-require('nvim-autopairs').setup({
-  disable_filetype = { 'TelescopePrompt', 'vim' },
 })
 
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())

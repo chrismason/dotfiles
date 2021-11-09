@@ -1,8 +1,35 @@
-local colors = require('config.core.theme.colors')
-local highlight = require('config.utils').highlight
+local highlight = require('core.utils').highlight
+local themeColors = require('tokyonight.colors').setup()
+
+local colors = {
+  white = themeColors.fg_dark,
+  bg = themeColors.bg,
+  bg_highlight = themeColors.bg_highlight,
+  blue = themeColors.blue,
+  purple = themeColors.magenta,
+  orange = themeColors.orange,
+  trace = themeColors.orange,
+  hint = themeColors.teal,
+  red = themeColors.red,
+  diffAdd = themeColors.git.add,
+  diffModified = themeColors.git.change,
+  diffDeleted = themeColors.git.delete,
+  info = themeColors.green2,
+  error = themeColors.magenta2,
+  warn = themeColors.orange,
+  floatBorder = themeColors.border_highlight,
+  selection_caret = themeColors.purple,
+}
+
 local M = {}
 
-function M.init()
+function M.set_theme()
+  vim.g.tokyonight_style = 'night'
+  vim.g.tokyonight_sidebars = { 'qf', 'packer' }
+  vim.cmd('color tokyonight')
+end
+
+function M.set_highlights()
   highlight('DiagnosticVirtualTextError', 'None', colors.error)
   highlight('DiagnosticVirtualTextWarn', 'None', colors.warn)
   highlight('DiagnosticVirtualTextInfo', 'None', colors.info)
@@ -40,11 +67,6 @@ function M.init()
   highlight('NotifyTRACEBorder', nil, colors.trace)
   highlight('NotifyTRACETitle', nil, colors.trace)
   highlight('NotifyTRACEIcon', nil, colors.trace)
-
-  vim.cmd([[
-    highlight clear NormalFloat
-    highlight link NormalFloat Normal
-  ]])
 end
 
 return M

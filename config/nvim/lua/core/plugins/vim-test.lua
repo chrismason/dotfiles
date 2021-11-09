@@ -1,11 +1,15 @@
-local map = require('config.utils').map
-local M = {}
+local map = require('core.utils').map
+local g = vim.g
 
-function M.init()
+local function setup_mappings()
   map('n', '<leader>tn', ":TestNearest<CR>", { noremap = true, silent = true })
   map('n', '<leader>tf', ":TestFile<CR>", { noremap = true, silent = true })
   map('n', '<leader>ts', ':TestSuite<CR>', { noremap = true, silent = true })
   map('n', '<leader>tl', ':TestLast<CR>', { noremap = true, silent = true })
 end
 
-return M
+g['test#strategy'] = 'neovim'
+g['test#csharp#runner'] = 'dotnettest'
+g['test#go#runner'] = 'gotest'
+
+setup_mappings()
