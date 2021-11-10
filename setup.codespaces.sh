@@ -8,10 +8,10 @@ sudo chsh -s "$(which zsh)" "$(whoami)"
 
 rm -f $HOME/.zshrc
 
-sudo apt-add-repository -y ppa:neovim-ppa/unstable
+# sudo apt-add-repository -y ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install -y \
-    ripgrep fzf fontconfig python3-pip neovim
+    ripgrep fzf fontconfig python3-pip # neovim
 
 mkdir -p $HOME/.config
 
