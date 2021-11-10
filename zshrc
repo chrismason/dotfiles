@@ -4,6 +4,8 @@ export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:"$HOME/.local/bin"
 
+export GPG_TTY=$(tty)
+
 ZSH_THEME="robbyrussell"
 
 plugins=(git)
