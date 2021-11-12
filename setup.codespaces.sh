@@ -4,7 +4,7 @@ exec > >(tee -i $HOME/dotfiles_install.log)
 exec 2>&1
 set -x
 
-TMP_NVIM_DIR="/tmp/$USER/neovim"; mkdir -p $TMP_NVIM_DIR
+TMP_NVIM_DIR="/tmp/neovim"; mkdir -p $TMP_NVIM_DIR
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
