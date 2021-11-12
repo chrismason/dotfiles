@@ -16,7 +16,7 @@ sudo apt-get install -y \
     ripgrep fzf fontconfig python3-pip
     
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
-tar -xzf "$TMP_NVIM_DIR/nvim-linux64.tar.gz"
+tar -xf "$TMP_NVIM_DIR/nvim-linux64.tar.gz" --directory $TMP_NVIM_DIR
 cp -RT "$TMP_NVIM_DIR/nvim-linux64/" "$HOME/.local" >/dev/null
 
 rm -rf $TMP_NVIM_DIR
