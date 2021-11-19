@@ -19,8 +19,10 @@ opt.wildignore = {
   '**/node_modules/**',
   '**/.git/**',
 }
+opt.wildmode = { 'longest', 'list', 'full' }
 
-opt.rnu = true
+opt.number = true
+opt.relativenumber = true
 opt.signcolumn = 'yes:2'
 opt.lazyredraw = true
 opt.mouse = 'a'
