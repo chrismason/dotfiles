@@ -8,10 +8,14 @@ map('n', '<c-j>', '<c-w>j')
 map('n', '<c-k>', '<c-w>k')
 map('n', '<c-l>', '<c-w>l')
 
-map('n', 'Y', 'y$')
+map('n', 'Y', 'yg$')
 map('n', '<leader>y', '"+y')
 map('n', '<leader>Y', 'gg"+yG')
 map('n', '<leader>d', '"_d')
+map('n', '<C-f>', ':silent !tmux neww tmux-sessionizer<cr>')
+map('n', '<leader>+', ':vertical resize +5<cr>')
+map('n', '<leader>-', ':vertical resize -5<cr>')
+map('n', '<leader>rp', ':resize 100<cr>')
 
 -- Navigate merge conflict markers
 map('n', ']n', [[:call search('^\(@@ .* @@\|[<=>|]\{7}[<=>|]\@!\)', 'W')<cr>]], { silent = true })
