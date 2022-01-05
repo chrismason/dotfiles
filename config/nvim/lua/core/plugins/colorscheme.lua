@@ -44,10 +44,10 @@ function M.set_highlights()
   highlight('ErrorMsg', 'None', colors.error)
   highlight('WarningMsg', 'None', colors.warn)
 
-  highlight('LspDiagnosticsError', 'None', colors.error)
-  highlight('LspDiagnosticsWarn', 'None', colors.warn)
-  highlight('LspDiagnosticsInfo', 'None', colors.info)
-  highlight('LspDiagnosticsHint', 'None', colors.hint)
+  highlight('DiagnosticError', 'None', colors.error)
+  highlight('DiagnosticWarn', 'None', colors.warn)
+  highlight('DiagnosticInfo', 'None', colors.info)
+  highlight('DiagnosticHint', 'None', colors.hint)
 
   highlight('LspSignatureActiveParameter', 'None', colors.orange)
 

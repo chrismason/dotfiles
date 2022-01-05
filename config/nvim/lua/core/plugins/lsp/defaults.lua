@@ -20,9 +20,9 @@ function M.on_attach(client, bufnr)
   buf_map('n', '<leader>gn', '<cmd>lua vim.lsp.buf.rename.float()<cr>', opts)
 
   -- diagnostics
-  buf_map('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
-  buf_map('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
-  buf_map('n', 'ge', '<cmd>lua vim.lsp.diagnostic.open_float(0, { scope = "line", })<cr>', opts)
+  buf_map('n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+  buf_map('n', ']g', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+  buf_map('n', 'ge', '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", })<cr>', opts)
   buf_map('n', '<leader>ge', '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>', opts)
   buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
   buf_map('n', '<leader>ga', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>', opts)
