@@ -41,3 +41,6 @@ map('c', '<c-a>', '<home>')
 
 -- other
 map('x', '<leader>p', '"_dP')
+
+-- terminal
+map('t', '<esc>', '<c-\\><c-n><cr>')
