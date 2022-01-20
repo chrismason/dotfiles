@@ -76,6 +76,7 @@ return require('packer').startup(function(use)
     requires = {
       'windwp/nvim-ts-autotag',
       'nvim-treesitter/nvim-treesitter-refactor',
+      'nvim-treesitter/playground'
     },
     run = ':TSUpdate',
     config = function()
