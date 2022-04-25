@@ -24,7 +24,7 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-u>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -59,10 +59,10 @@ cmp.setup({
       'i',
       's',
     }),
-  },
-  documentation = {
-    border = 'single',
-    winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
+  }),
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   experimental = {
     ghost_text = true,
