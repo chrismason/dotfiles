@@ -9,7 +9,7 @@ if features.prettier then
   table.insert(sources, formatting.prettier)
 end
 
-if features.eslint then
+if features.eslint_d then
   table.insert(sources, diagnostics.eslint)
 end
 
