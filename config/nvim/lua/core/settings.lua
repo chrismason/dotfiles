@@ -46,11 +46,6 @@ opt.updatetime = 100
 opt.clipboard = { 'unnamed', 'unnamedplus' }
 
 vim.cmd([[
-  filetype plugin indent on
-  autocmd BufWritePre * :%s/\s\+$//e
-]])
-
-vim.cmd([[
   augroup highlight_yank
   autocmd!
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout=40})
