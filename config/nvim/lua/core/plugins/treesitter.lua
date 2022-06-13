@@ -11,7 +11,8 @@ require('nvim-treesitter.configs').setup({
     'scss',
     'go',
     'yaml',
-    'c_sharp'
+    'c_sharp',
+    'rust'
   },
   highlight = {
     enable = true,
