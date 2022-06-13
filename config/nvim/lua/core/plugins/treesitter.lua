@@ -11,14 +11,17 @@ require('nvim-treesitter.configs').setup({
     'scss',
     'go',
     'yaml',
-    'c_sharp'
+    'c_sharp',
+    'rust'
   },
   highlight = {
     enable = true,
     use_languagetree = true,
+    additional_vim_regex_highlighting = true,
   },
   indent = {
-    enable = true,
+    -- enable = true,
+    enable = false,
   },
   autotag = {
     enable = true,

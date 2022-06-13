@@ -46,10 +46,10 @@ return require('packer').startup(function(use)
     requires = {
       'neovim/nvim-lspconfig',
       'ray-x/lsp_signature.nvim',
+      'jose-elias-alvarez/null-ls.nvim',
     },
     config = function()
       require 'core.plugins.lsp'
-      -- require('config.plugins.lsp')
     end,
   })
 
