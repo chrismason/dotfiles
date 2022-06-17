@@ -46,9 +46,17 @@ opt.updatetime = 100
 opt.clipboard = { 'unnamed', 'unnamedplus' }
 opt.isfname:append("@-@")
 
-vim.cmd([[
-  augroup highlight_yank
-  autocmd!
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout=40})
-  augroup END
-]])
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
+local yank_group = augroup('HighlightYank', {})
+autocmd('TextYankPost', {
+  group = yank_group,
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 40,
+    })
+  end,
+})
