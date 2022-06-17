@@ -44,6 +44,7 @@ opt.sidescrolloff = 8
 opt.updatetime = 100
 
 opt.clipboard = { 'unnamed', 'unnamedplus' }
+opt.isfname:append("@-@")
 
 vim.cmd([[
   augroup highlight_yank
