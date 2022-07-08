@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
     'folke/tokyonight.nvim',
     config = function()
       require('core.plugins.colorscheme').set_theme()
+      require('core.plugins.colorscheme').set_globalcolors()
     end,
   })
 
@@ -111,6 +112,17 @@ return require('packer').startup(function(use)
     'theprimeagen/harpoon',
     config = function()
       require 'core.plugins.harpoon'
+    end,
+  })
+
+  use ({
+    'mfussenegger/nvim-dap',
+    requires = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text'
+    },
+    config = function()
+      require 'core.plugins.dap'
     end,
   })
 

@@ -19,6 +19,7 @@ local colors = {
   warn = themeColors.orange,
   floatBorder = themeColors.border_highlight,
   selection_caret = themeColors.purple,
+  lineNumbers = themeColors.teal,
 }
 
 local M = {}
@@ -27,6 +28,10 @@ function M.set_theme()
   vim.g.tokyonight_style = 'night'
   vim.g.tokyonight_sidebars = { 'qf', 'packer' }
   vim.cmd('color tokyonight')
+end
+
+function M.set_globalcolors()
+  highlight('LineNr', 'None', colors.lineNumbers)
 end
 
 function M.set_highlights()
