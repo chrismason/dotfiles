@@ -18,7 +18,7 @@ dap.listeners.after.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-require('core.plugins.debuggers.go')
+require('dap-go').setup()
 
 map('n', '<F5>', function()
   dap.continue()

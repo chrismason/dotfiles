@@ -119,7 +119,8 @@ return require('packer').startup(function(use)
     'mfussenegger/nvim-dap',
     requires = {
       'rcarriga/nvim-dap-ui',
-      'theHamsta/nvim-dap-virtual-text'
+      'theHamsta/nvim-dap-virtual-text',
+      'leoluz/nvim-dap-go'
     },
     config = function()
       require 'core.plugins.dap'
