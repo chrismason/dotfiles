@@ -21,13 +21,16 @@ cp -RT "$TMP_NVIM_DIR/nvim-linux64/" "$HOME/.local" >/dev/null
 
 rm -rf $TMP_NVIM_DIR
 
-mkdir -p $HOME/.config
-
 # Setup config files
+rm -rf $HOME/.gitconfig
 ln -s $(pwd)/gitconfig $HOME/.gitconfig
+
 ln -s $(pwd)/tmux.conf $HOME/.tmux.conf
 ln -s $(pwd)/aliases.zsh $HOME/.aliases.zsh
 ln -s $(pwd)/zshrc $HOME/.zshrc
+
+rm -rf $HOME/.config
+mkdir $HOME/.config
 ln -s $(pwd)/config/nvim $HOME/.config/nvim
 
 pip3 install pynvim
