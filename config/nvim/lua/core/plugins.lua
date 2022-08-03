@@ -43,8 +43,9 @@ return require('packer').startup(function(use)
   }
 
   use({
-    'williamboman/nvim-lsp-installer',
+    'williamboman/mason.nvim',
     requires = {
+      'williamboman/mason-lspconfig.nvim',
       'neovim/nvim-lspconfig',
       'ray-x/lsp_signature.nvim',
       'jose-elias-alvarez/null-ls.nvim',
@@ -77,7 +78,8 @@ return require('packer').startup(function(use)
     requires = {
       'windwp/nvim-ts-autotag',
       'nvim-treesitter/nvim-treesitter-refactor',
-      'nvim-treesitter/playground'
+      'nvim-treesitter/playground',
+      'romgrk/nvim-treesitter-context'
     },
     run = ':TSUpdate',
     config = function()

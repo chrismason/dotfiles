@@ -1,14 +1,26 @@
-local config = require 'core.plugins.lsp.defaults'.defaults()
+local M = {}
 
-return function()
-  config.settings = {
-    yaml = {
-      schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.yml",
-      }
+M.settings = {
+  yaml = {
+    schemas = {
+      ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+      ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.yml",
     }
   }
+}
 
-  return config
-end
+return M
+-- local config = require 'core.plugins.lsp.defaults'.defaults()
+-- 
+-- return function()
+--   config.settings = {
+--     yaml = {
+--       schemas = {
+--         ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+--         ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.yml",
+--       }
+--     }
+--   }
+-- 
+--   return config
+-- end
