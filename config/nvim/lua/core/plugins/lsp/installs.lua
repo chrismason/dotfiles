@@ -54,6 +54,13 @@ mason_lsp.setup_handlers({
       settings = require('core.plugins.lsp.installs.gopls').settings
     }
   end,
+  ["tsserver"] = function()
+    lspconfig.tsserver.setup {
+      capabilities = capabilities,
+      flags = flags,
+      on_attach = require('core.plugins.lsp.installs.tsserver').on_attach,
+    }
+  end,
   ["sumneko_lua"] = function()
     lspconfig.sumneko_lua.setup {
       capabilities = capabilities,
@@ -71,17 +78,3 @@ mason_lsp.setup_handlers({
     }
   end
 })
-
---mason.on_server_ready(function(server)
---
---  local server_opts = {
---    ["gopls"] = require 'core.plugins.lsp.installs.gopls',
---    ["yamlls"] = require 'core.plugins.lsp.installs.yamlls',
---    ["tsserver"] = require 'core.plugins.lsp.installs.tsserver',
---  }
---
---  local opts = server_opts[server.name] and server_opts[server.name]() or defaults
---
---  server:setup(opts)
---  vim.cmd([[ do User LspAttachBuffers ]])
---end)
