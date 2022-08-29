@@ -100,7 +100,7 @@ local function on_attach(client, bufnr)
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[augroup LspFormatting]]
     vim.cmd [[autocmd! * <buffer>]]
-    vim.cmd [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
+    vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]
     vim.cmd [[augroup END]]
   end
 
