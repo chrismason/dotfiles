@@ -23,7 +23,7 @@ rm -rf $TMP_NVIM_DIR
 
 # Setup config files
 rm -rf $HOME/.gitconfig
-ln -s $(pwd)/gitconfig $HOME/.gitconfig
+ln -s $(pwd)/gitconfig-codespaces $HOME/.gitconfig
 
 ln -s $(pwd)/tmux.conf $HOME/.tmux.conf
 ln -s $(pwd)/aliases.zsh $HOME/.aliases.zsh

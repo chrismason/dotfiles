@@ -1,0 +1,17 @@
+[user]
+  name = Chris Mason
+  email = 6392972+chrismason@users.noreply.github.com
+[core]
+  editor = nvim
+[github]
+  user = chrismason
+[push]
+  default = current
+[http]
+  sslVerify = true
+[pull]
+  rebase = false
+[remote "origin"]
+  prune = true
+[init]
+  defaultBranch = main
