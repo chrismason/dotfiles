@@ -1,6 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh
 
-export GOPATH=/go
+export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:"$HOME/.local/bin"
 
