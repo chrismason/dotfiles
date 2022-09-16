@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
 
   -- colorscheme
   use({
-    'folke/tokyonight.nvim',
+    'catppuccin/nvim', as = 'catppuccin',
     config = function()
       require('core.plugins.colorscheme').set_theme()
       require('core.plugins.colorscheme').set_globalcolors()
@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
 
   use({
     'kyazdani42/nvim-web-devicons',
-    after = 'tokyonight.nvim',
+    after = 'catppuccin/nvim',
   })
 
   -- Fuzzy finding
@@ -103,21 +103,21 @@ return require('packer').startup(function(use)
     cmd = 'Git',
   })
 
-  use ({
+  use({
     'nvim-lualine/lualine.nvim',
     config = function()
       require 'core.plugins.lualine'
     end,
   })
 
-  use ({
+  use({
     'theprimeagen/harpoon',
     config = function()
       require 'core.plugins.harpoon'
     end,
   })
 
-  use ({
+  use({
     'mfussenegger/nvim-dap',
     requires = {
       'rcarriga/nvim-dap-ui',
