@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
 
   use({
     'kyazdani42/nvim-web-devicons',
-    after = 'catppuccin/nvim',
+    -- after = 'catppuccin/nvim',
   })
 
   -- Fuzzy finding
