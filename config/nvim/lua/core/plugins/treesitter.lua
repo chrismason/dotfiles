@@ -12,7 +12,8 @@ require('nvim-treesitter.configs').setup({
     'go',
     'yaml',
     'c_sharp',
-    'rust'
+    'rust',
+    'ruby'
   },
   highlight = {
     enable = true,
