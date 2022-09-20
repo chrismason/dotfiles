@@ -13,6 +13,11 @@ if features.eslint_d then
   table.insert(sources, diagnostics.eslint)
 end
 
+if features.rubocop then
+  table.insert(sources, formatting.rubocop)
+  table.insert(sources, diagnostics.rubocop)
+end
+
 if #sources ~= 0 then
   null_ls.setup({
     debug = false,
