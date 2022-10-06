@@ -17,8 +17,8 @@ mason.setup({
 })
 
 mason_lsp.setup {
-  ensure_installed = { "bash-language-server", "gopls", "json-lsp", "lua-language-server", "rust-analyzer",
-    "typescript-language-server", "yaml-language-server" },
+  ensure_installed = { "bashls", "gopls", "jsonls", "sumneko_lua", "rust_analyzer",
+    "tsserver", "yamlls", "sorbet" },
   automatic_installation = true
 }
 
