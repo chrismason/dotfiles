@@ -129,4 +129,8 @@ return require('packer').startup(function(use)
     end,
   })
 
+  use({
+    'gpanders/editorconfig.nvim'
+  })
+
 end)
