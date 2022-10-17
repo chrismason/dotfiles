@@ -23,7 +23,7 @@ if #sources ~= 0 then
     debug = false,
     sources = sources,
     on_attach = function(client)
-      if client.resolved_capabilities.document_formatting then
+      if client.server_capabilities.documentFormattingProvider then
         local id = vim.api.nvim_create_augroup("lsp_formatting", { clear = false })
         vim.api.nvim_clear_autocmds({ buffer = 0, group = id })
         vim.api.nvim_create_autocmd("BufWritePre", {
