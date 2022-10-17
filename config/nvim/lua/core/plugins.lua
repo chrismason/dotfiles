@@ -75,16 +75,18 @@ return require('packer').startup(function(use)
 
   use({
     'nvim-treesitter/nvim-treesitter',
-    requires = {
-      -- 'windwp/nvim-ts-autotag',
-      'nvim-treesitter/nvim-treesitter-refactor',
-      'nvim-treesitter/playground',
-      'romgrk/nvim-treesitter-context'
-    },
     run = ':TSUpdate',
     config = function()
       require 'core.plugins.treesitter'
     end,
+  })
+
+  use({
+    'romgrk/nvim-treesitter-context'
+  })
+
+  use({
+    'nvim-treesitter/nvim-treesitter-refactor'
   })
 
   use({
