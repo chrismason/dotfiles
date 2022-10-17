@@ -14,8 +14,8 @@ if features.eslint_d then
 end
 
 if features.rubocop then
-  table.insert(sources, formatting.rubocop)
-  table.insert(sources, diagnostics.rubocop)
+  table.insert(sources, formatting.rubocop.with({ command = "bin/rubocop" }))
+  table.insert(sources, diagnostics.rubocop.with({ command = "bin/rubocop" }))
 end
 
 if #sources ~= 0 then
@@ -29,7 +29,9 @@ if #sources ~= 0 then
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = 0,
           group = id,
-          callback = vim.lsp.buf.formatting_sync,
+          callback = function()
+            vim.lsp.buf.format({ sync = true })
+          end,
         })
       end
     end
