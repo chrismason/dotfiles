@@ -22,59 +22,12 @@ mason_lsp.setup {
   automatic_installation = true
 }
 
-local lspconfig = require('lspconfig')
-
-local defaults = default_config.defaults()
-local capabilities = defaults.capabilities
-local on_attach = defaults.on_attach
-local flags = defaults.flags
-
-mason_lsp.setup_handlers({
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      flags = flags,
-      on_attach = on_attach,
-    }
-  end,
-  ["jsonls"] = function()
-    lspconfig.jsonls.setup {
-      capabilities = capabilities,
-      flags = flags,
-      on_attach = on_attach,
-      settings = require('core.plugins.lsp.installs.jsonls').settings
-    }
-  end,
-  ["gopls"] = function()
-    lspconfig.gopls.setup {
-      capabilities = capabilities,
-      flags = flags,
-      on_attach = on_attach,
-      cmd = require('core.plugins.lsp.installs.gopls').cmd,
-      settings = require('core.plugins.lsp.installs.gopls').settings
-    }
-  end,
-  ["tsserver"] = function()
-    lspconfig.tsserver.setup {
-      capabilities = capabilities,
-      flags = flags,
-      on_attach = require('core.plugins.lsp.installs.tsserver').on_attach,
-    }
-  end,
-  ["sumneko_lua"] = function()
-    lspconfig.sumneko_lua.setup {
-      capabilities = capabilities,
-      flags = flags,
-      on_attach = on_attach,
-      settings = require('core.plugins.lsp.installs.sumneko_lua').settings
-    }
-  end,
-  ["yamlls"] = function()
-    lspconfig.yamlls.setup {
-      capabilities = capabilities,
-      flags = flags,
-      on_attach = on_attach,
-      settings = require('core.plugins.lsp.installs.yamlls').settings
-    }
-  end
-})
+require("core.plugins.lsp.installs.bash")
+require("core.plugins.lsp.installs.gopls")
+require("core.plugins.lsp.installs.jsonls")
+require("core.plugins.lsp.installs.rust")
+require("core.plugins.lsp.installs.solargraph")
+require("core.plugins.lsp.installs.sorbet")
+require("core.plugins.lsp.installs.sumneko_lua")
+require("core.plugins.lsp.installs.tsserver")
+require("core.plugins.lsp.installs.yamlls")
