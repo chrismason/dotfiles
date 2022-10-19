@@ -2,137 +2,139 @@ local fn = vim.fn
 local cmd = vim.cmd
 
 -- Automatically install packer.nvim
-local install_path = fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  cmd('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+	cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
-cmd [[packadd packer.nvim]]
+cmd([[packadd packer.nvim]])
 
-return require('packer').startup(function(use)
-  -- Packer itself
-  use { 'wbthomason/packer.nvim', opt = true }
+return require("packer").startup(function(use)
+	-- Packer itself
+	use({ "wbthomason/packer.nvim", opt = true })
 
-  -- colorscheme
-  use({
-    'catppuccin/nvim', as = 'catppuccin',
-    config = function()
-      require('core.plugins.colorscheme').set_theme()
-      require('core.plugins.colorscheme').set_globalcolors()
-    end,
-  })
+	-- colorscheme
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+		config = function()
+			require("core.plugins.colorscheme").set_theme()
+			require("core.plugins.colorscheme").set_globalcolors()
+		end,
+	})
 
-  use({
-    'kyazdani42/nvim-web-devicons',
-    -- after = 'catppuccin/nvim',
-  })
+	use({
+		"kyazdani42/nvim-web-devicons",
+		-- after = 'catppuccin/nvim',
+	})
 
-  -- Fuzzy finding
-  use {
-    'nvim-telescope/telescope.nvim',
-    config = function()
-      require 'core.plugins.telescope'
-    end,
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-lua/popup.nvim',
+	-- Fuzzy finding
+	use({
+		"nvim-telescope/telescope.nvim",
+		config = function()
+			require("core.plugins.telescope")
+		end,
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-lua/popup.nvim",
 
-      -- FZF sorter for Telescope
-      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-    },
-  }
+			-- FZF sorter for Telescope
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		},
+	})
 
-  use({
-    'williamboman/mason.nvim',
-    requires = {
-      'williamboman/mason-lspconfig.nvim',
-      'neovim/nvim-lspconfig',
-      'ray-x/lsp_signature.nvim',
-      'jose-elias-alvarez/null-ls.nvim',
-    },
-    config = function()
-      require 'core.plugins.lsp'
-    end,
-  })
+	use({
+		"williamboman/mason.nvim",
+        requires = {
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+            "ray-x/lsp_signature.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
+        },
+		config = function()
+			require("core.plugins.lsp")
+		end,
+	})
 
-  use({
-    'hrsh7th/nvim-cmp',
-    config = function()
-      require 'core.plugins.cmp'
-    end,
-    requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/nvim-cmp',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-      'windwp/nvim-autopairs',
-      'onsails/lspkind-nvim',
-    },
-  })
+	use({
+		"hrsh7th/nvim-cmp",
+		config = function()
+			require("core.plugins.cmp")
+		end,
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/nvim-cmp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"windwp/nvim-autopairs",
+			"onsails/lspkind-nvim",
+		},
+	})
 
-  use({
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    config = function()
-      require 'core.plugins.treesitter'
-    end,
-  })
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
+		config = function()
+			require("core.plugins.treesitter")
+		end,
+	})
 
-  use({
-    'romgrk/nvim-treesitter-context'
-  })
+	use({
+		"romgrk/nvim-treesitter-context",
+	})
 
-  -- use({
-  --   'nvim-treesitter/nvim-treesitter-refactor'
-  -- })
+	-- use({
+	--   'nvim-treesitter/nvim-treesitter-refactor'
+	-- })
 
-  use({
-    'vim-test/vim-test',
-    requires = {
-      'tpope/vim-dispatch',
-    },
-    config = function()
-      require 'core.plugins.vim-test'
-    end,
-  })
+	use({
+		"vim-test/vim-test",
+		requires = {
+			"tpope/vim-dispatch",
+		},
+		config = function()
+			require("core.plugins.vim-test")
+		end,
+	})
 
-  use({
-    'tpope/vim-fugitive',
-    opt = true,
-    cmd = 'Git',
-  })
+	use({
+		"tpope/vim-fugitive",
+		opt = true,
+		cmd = "Git",
+	})
 
-  use({
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require 'core.plugins.lualine'
-    end,
-  })
+	use({
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("core.plugins.lualine")
+		end,
+	})
 
-  use({
-    'theprimeagen/harpoon',
-    config = function()
-      require 'core.plugins.harpoon'
-    end,
-  })
+	use({
+		"theprimeagen/harpoon",
+		config = function()
+			require("core.plugins.harpoon")
+		end,
+	})
 
-  use({
-    'mfussenegger/nvim-dap',
-    requires = {
-      'rcarriga/nvim-dap-ui',
-      'theHamsta/nvim-dap-virtual-text',
-      'leoluz/nvim-dap-go'
-    },
-    config = function()
-      require 'core.plugins.dap'
-    end,
-  })
+	use({
+		"mfussenegger/nvim-dap",
+		requires = {
+			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
+			"leoluz/nvim-dap-go",
+		},
+		config = function()
+			require("core.plugins.dap")
+		end,
+	})
 
-  use({
-    'gpanders/editorconfig.nvim'
-  })
-
+	use({
+		"gpanders/editorconfig.nvim",
+	})
 end)

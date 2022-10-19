@@ -1,22 +1,21 @@
 local null_ls = require("null-ls")
 local features = require("core.plugins.lsp.features")
-local utils = require("core.utils")
+-- local utils = require("core.utils")
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
-utils.mason_ensure_tools({
-	{ name = "goimports", version = "latest" },
-	{ name = "golangci-lint", version = "v1.49.0" },
-	{ name = "luacheck" },
-	{ name = "stylua" },
-})
+-- utils.mason_ensure_tools({
+-- 	{ name = "goimports", version = "latest" },
+-- 	{ name = "golangci-lint", version = "v1.49.0" },
+-- 	{ name = "luacheck" },
+-- 	{ name = "stylua" },
+-- })
 
 local sources = {
-	diagnostics.golangci_lint.with({ command = utils.mason_get_path("golangci-lint") }),
-	diagnostics.luacheck.with({ command = utils.mason_get_path("luacheck") }),
+	diagnostics.luacheck,
 	diagnostics.tsc,
-	formatting.goimports.with({ command = utils.mason_get_path("goimports") }),
-	formatting.stylua.with({ command = utils.mason_get_path("stylua") }),
+	formatting.goimports,
+	formatting.stylua,
 }
 
 if features.prettier then
@@ -30,6 +29,10 @@ end
 if features.rubocop then
 	table.insert(sources, formatting.rubocop.with({ command = "bin/rubocop" }))
 	table.insert(sources, diagnostics.rubocop.with({ command = "bin/rubocop" }))
+end
+
+if features.golangci_lint then
+	table.insert(sources, diagnostics.golangci_lint)
 end
 
 if #sources ~= 0 then
