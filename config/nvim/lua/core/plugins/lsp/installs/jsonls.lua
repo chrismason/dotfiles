@@ -1,6 +1,7 @@
-local M = {}
+local lspconfig = require("lspconfig")
+local config = require("core.plugins.lsp.defaults").defaults()
 
-M.settings = {
+config.settings = {
   json = {
     schemas = {
       {
@@ -23,4 +24,4 @@ M.settings = {
   }
 }
 
-return M
+lspconfig.jsonls.setup(config)

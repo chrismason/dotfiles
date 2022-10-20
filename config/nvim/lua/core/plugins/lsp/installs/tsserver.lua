@@ -1,15 +1,13 @@
-local M = {}
+local lspconfig = require("lspconfig")
+local cfg = require("core.plugins.lsp.defaults")
+local config = cfg.defaults()
+local features = require("core.plugins.lsp.features")
 
-local config = require 'core.plugins.lsp.defaults'
-local features = require 'core.plugins.lsp.features'
+config.on_attach = function(client, bufnr)
+	client.server_capabilities.documentFormattingProvider = not features.prettier
+	client.server_capabilities.documentRangeFormattingProvider = not features.prettier
 
-local on_attach = function(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = not features.prettier
-  client.server_capabilities.documentRangeFormattingProvider = not features.prettier
-
-  config.on_attach(client, bufnr)
+	cfg.on_attach(client, bufnr)
 end
 
-M.on_attach = on_attach
-
-return M
+lspconfig.tsserver.setup(config)

@@ -1,31 +1,24 @@
-local M = {}
+local lspconfig = require("lspconfig")
+local cfg = require("core.plugins.lsp.defaults")
+local config = cfg.defaults()
+local features = require("core.plugins.lsp.features")
 
-M.cmd = { "gopls", "serve" }
-M.settings = {
-  gopls = {
-    analyses = {
-      unusedparams = true,
-      shadow = true,
-    },
-    staticcheck = true,
-  }
+config.on_attach = function(client, bufnr)
+	client.server_capabilities.documentFormattingProvider = not features.golangci_lint
+	client.server_capabilities.documentRangeFormattingProvider = not features.golangci_lint
+
+	cfg.on_attach(client, bufnr)
+end
+
+config.cmd = { "gopls", "serve" }
+config.settings = {
+	gopls = {
+		analyses = {
+			unusedparams = true,
+			shadow = true,
+		},
+		staticcheck = true,
+	},
 }
 
-return M
-
--- local config = require 'core.plugins.lsp.defaults'.defaults()
--- 
--- return function()
---   config.cmd = { "gopls", "serve" }
---   config.settings = {
---     gopls = {
---       analyses = {
---         unusedparams = true,
---         shadow = true,
---       },
---       staticcheck = true,
---     }
---   }
--- 
---   return config
--- end
+lspconfig.gopls.setup(config)
