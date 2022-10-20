@@ -1,5 +1,5 @@
-local reg = require("mason-registry")
-local path = require("mason-core.path")
+local mason_reg_ok, reg = pcall(require("mason-registry"))
+local mason_path_ok, path = pcall(require("mason-core.path"))
 local M = {}
 
 function M.map(modes, lhs, rhs, opts)
@@ -22,18 +22,22 @@ function M.highlight(group, bg, fg, gui)
 end
 
 function M.mason_get_path(package_name)
-	return path.concat({ vim.fn.stdpath("data"), "mason", "bin", package_name })
+    if mason_path_ok then
+        return path.concat({ vim.fn.stdpath("data"), "mason", "bin", package_name })
+    end
 end
 
 function M.mason_ensure_tools(packages)
-	for _, package in ipairs(packages) do
-		local p = reg.get_package(package["name"])
+    if mason_reg_ok then
+        for _, package in ipairs(packages) do
+            local p = reg.get_package(package["name"])
 
-		if not p:is_installed() then
-			print("Installing " .. package["name"])
-			p:install({ version = package["version"] })
-		end
-	end
+            if not p:is_installed() then
+                print("Installing " .. package["name"])
+                p:install({ version = package["version"] })
+            end
+        end
+    end
 end
 
 return M
