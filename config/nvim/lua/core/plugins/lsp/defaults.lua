@@ -111,7 +111,7 @@ local function on_attach(client, bufnr)
 		},
 	}, bufnr)
 
-	require("core.plugins.colorscheme").set_highlights()
+	-- require("core.plugins.colorscheme").set_highlights()
 	print("LSP attached")
 end
 

@@ -22,9 +22,7 @@ local highlight = require('core.utils').highlight
 --   lineNumbers = themeColors.teal,
 -- }
 
-local M = {}
-
-function M.set_theme()
+local function set_theme()
   vim.g.catppuccin_flavour = 'mocha'
   require('catppuccin').setup({
     integrations = {
@@ -53,6 +51,11 @@ function M.set_theme()
   })
   vim.cmd('color catppuccin')
 end
+
+set_theme()
+
+
+local M = {}
 
 function M.set_globalcolors()
   --  highlight('LineNr', 'None', colors.lineNumbers)
