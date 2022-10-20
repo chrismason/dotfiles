@@ -85,7 +85,7 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"romgrk/nvim-treesitter-context",
+		"nvim-treesitter/nvim-treesitter-context",
 	})
 
 	-- use({
