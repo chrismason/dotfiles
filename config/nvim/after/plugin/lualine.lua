@@ -1,4 +1,8 @@
-local lualine = require 'lualine'
+local lualine_ok, lualine = pcall(require, 'lualine')
+
+if not lualine_ok then
+  return
+end
 
 lualine.setup {
   options = {
@@ -7,4 +11,3 @@ lualine.setup {
     component_separators = { left = '', right = '' },
   },
 }
-

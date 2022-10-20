@@ -1,4 +1,9 @@
 local highlight = require('core.utils').highlight
+local catppuccin_ok, catppuccin = pcall(require, 'catppuccin')
+
+if not catppuccin_ok then
+  return
+end
 -- local themeColors = require('tokyonight.colors').setup()
 
 -- local colors = {
@@ -24,7 +29,7 @@ local highlight = require('core.utils').highlight
 
 local function set_theme()
   vim.g.catppuccin_flavour = 'mocha'
-  require('catppuccin').setup({
+  catppuccin.setup({
     integrations = {
       treesitter = true,
       native_lsp = {

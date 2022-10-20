@@ -1,5 +1,10 @@
-local actions = require 'telescope.actions'
-local map = require ('core.utils').map
+local actions_ok, actions = pcall(require, 'telescope.actions')
+local telescope_ok, telescope = pcall(require, 'telescope')
+local map = require('core.utils').map
+
+if not actions_ok or not telescope_ok then
+  return
+end
 
 map('n', '<leader>pf', [[<cmd>lua require'telescope.builtin'.find_files()<cr>]])
 map('n', '<C-p>', [[<cmd>lua require'telescope.builtin'.git_files()<cr>]])
@@ -8,7 +13,7 @@ map('n', '<leader>pb', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]])
 map('n', '<leader>pgs', [[<cmd>lua require'telescope.builtin'.git_status()<cr>]])
 map('n', '<leader>fgc', [[<cmd>lua require'telescope.builtin'.git_commits()<cr>]])
 
-require('telescope').setup {
+telescope.setup {
   defaults = {
     prompt_prefix = ' ❯ ',
     selection_caret = '❯ ',
@@ -46,4 +51,4 @@ require('telescope').setup {
   },
 }
 
-require('telescope').load_extension 'fzf'
+telescope.load_extension 'fzf'

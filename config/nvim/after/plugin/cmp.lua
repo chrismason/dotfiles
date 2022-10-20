@@ -1,7 +1,12 @@
-local cmp = require('cmp')
-local autopairs = require 'nvim-autopairs'
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local luasnip = require('luasnip')
+local cmp_ok, cmp = pcall(require, 'cmp')
+local autopairs_ok, autopairs = pcall(require, 'nvim-autopairs')
+local cmp_autopairs_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+local luasnip_ok, luasnip = pcall(require, 'luasnip')
+local lspkind_ok, lspkind = pcall(require, 'lspkind')
+
+if not cmp_ok or not autopairs_ok or not cmp_autopairs_ok or not luasnip_ok or not lspkind_ok then
+  return
+end
 
 vim.cmd([[
   autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
@@ -75,7 +80,7 @@ cmp.setup({
     { name = 'path' },
   }),
   formatting = {
-    format = require('lspkind').cmp_format({
+    format = lspkind.cmp_format({
       with_text = true,
       menu = {
         buffer = '[buf]',
