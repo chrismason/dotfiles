@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:"$HOME/.local/bin"
-export PATH="$PATH:./node_modules/.bin"
+export PATH="$PATH:./bin"
 
 export GOPROXY="https://goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
 export GOPRIVATE=" "
