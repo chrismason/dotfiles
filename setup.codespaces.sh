@@ -34,7 +34,7 @@ mkdir $HOME/.config
 ln -s $(pwd)/config/nvim $HOME/.config/nvim
 
 if [ -f "/workspaces/github/bin/npm" ]; then
-    ln -s /workspaces/github/bin/npm /usr/local/bin/npm
+    sudo ln -s /workspaces/github/bin/npm /usr/local/bin/npm
 fi
 
 pip3 install pynvim
