@@ -108,4 +108,8 @@ return require("packer").startup(function(use)
 	use({
 		"gpanders/editorconfig.nvim",
 	})
+
+    use {
+        'lewis6991/gitsigns.nvim',
+    }
 end)

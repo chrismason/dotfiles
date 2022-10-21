@@ -30,8 +30,16 @@ end
 local function set_theme()
   vim.g.catppuccin_flavour = 'mocha'
   catppuccin.setup({
+    styles = {
+        comments = { 'italic' },
+        functions = { 'italic', 'bold' },
+        keywords = { 'bold' },
+    },
     integrations = {
       treesitter = true,
+      treesitter_context = true,
+      cmp = true,
+      telescope = true,
       native_lsp = {
         enabled = true,
         virtual_text = {
@@ -47,11 +55,11 @@ local function set_theme()
           information = { 'underline' },
         },
       },
-      telescope = true,
       dap = {
         enabled = true,
         enable_ui = true,
       },
+      gitsigns = true,
     }
   })
   vim.cmd('color catppuccin')
