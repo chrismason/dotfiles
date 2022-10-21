@@ -17,7 +17,7 @@ mason.setup({
 
 mason_lsp.setup({
 	ensure_installed = { "bashls", "gopls", "jsonls", "sumneko_lua", "rust_analyzer", "tsserver", "yamlls" },
-	automatic_installation = true,
+	-- automatic_installation = true,
 })
 
 require("core.plugins.lsp.installs.bash")
