@@ -18,7 +18,7 @@ sudo apt-get install -y \
 
 wget -O rdm $RDM_DOWNLOAD_URL
 chmod +x rdm
-sudo ln -s rdm "$HOME/.local/bin/rdm"
+sudo ln -s rdm /usr/local/bin/rdm
     
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
 tar -xf "$TMP_NVIM_DIR/nvim-linux64.tar.gz" --directory $TMP_NVIM_DIR
@@ -43,4 +43,4 @@ if [ -f "/workspaces/github/bin/npm" ]; then
 fi
 
 pip3 install pynvim
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+# nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
