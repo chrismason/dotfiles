@@ -18,7 +18,7 @@ sudo apt-get install -y \
     ripgrep fzf fontconfig python3-pip
 
 wget $RDM_DOWNLOAD_URL -P $TMP_RDM_DIR
-chmod +x $TMP_RDM_DIR/rdm
+chmod +x $TMP_RDM_DIR/rdm-linux-adm64
 mv $TMP_RDM_DIR/rdm-linux-amd64 "$HOME/.local/bin/rdm" >/dev/null
 
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
