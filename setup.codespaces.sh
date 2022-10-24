@@ -5,6 +5,7 @@ exec 2>&1
 set -x
 
 TMP_NVIM_DIR="/tmp/neovim"; mkdir -p $TMP_NVIM_DIR
+TMP_RDM_DIR="/tmp/rdm"; mkdir -p $TMP_RDM_DIR
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 RDM_DOWNLOAD_URL="https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64"
 
@@ -16,8 +17,9 @@ sudo apt-get update
 sudo apt-get install -y \
     ripgrep fzf fontconfig python3-pip
 
-sudo wget -O rdm $RDM_DOWNLOAD_URL -P /usr/local/bin
-sudo chmod +x /usr/local/bin/rdm
+wget $RDM_DOWNLOAD_URL -P $TMP_RDM_DIR
+chmod +x $TMP_RDM_DIR/rdm
+cp $TMP_RDM_DIR/rdm "$HOME/.local/bin" >/dev/null
 
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
 tar -xf "$TMP_NVIM_DIR/nvim-linux64.tar.gz" --directory $TMP_NVIM_DIR
