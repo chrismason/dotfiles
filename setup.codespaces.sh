@@ -19,7 +19,7 @@ sudo apt-get install -y \
 
 wget $RDM_DOWNLOAD_URL -P $TMP_RDM_DIR
 chmod +x $TMP_RDM_DIR/rdm
-cp $TMP_RDM_DIR/rdm "$HOME/.local/bin" >/dev/null
+mv $TMP_RDM_DIR/rdm-linux-amd64 "$HOME/.local/bin/rdm" >/dev/null
 
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
 tar -xf "$TMP_NVIM_DIR/nvim-linux64.tar.gz" --directory $TMP_NVIM_DIR
