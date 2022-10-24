@@ -16,10 +16,9 @@ sudo apt-get update
 sudo apt-get install -y \
     ripgrep fzf fontconfig python3-pip
 
-wget -O rdm $RDM_DOWNLOAD_URL
-chmod +x rdm
-sudo ln -s rdm /usr/local/bin/rdm
-    
+sudo wget -O rdm $RDM_DOWNLOAD_URL -P /usr/local/bin
+sudo chmod +x /usr/local/bin/rdm
+
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
 tar -xf "$TMP_NVIM_DIR/nvim-linux64.tar.gz" --directory $TMP_NVIM_DIR
 cp -RT "$TMP_NVIM_DIR/nvim-linux64/" "$HOME/.local" >/dev/null
