@@ -39,8 +39,15 @@ rm -rf $HOME/.config
 mkdir $HOME/.config
 ln -s $(pwd)/config/nvim $HOME/.config/nvim
 
-if [ -f "/workspaces/github/bin/npm" ]; then
+if [ -d "/workspaces/github/bin/" ]; then
     sudo ln -s /workspaces/github/bin/npm /usr/local/bin/npm
+    sudo ln -s /workspaces/github/bin/tsc /usr/local/bin/tsc
+    sudo ln -s /workspaces/github/bin/prettier /usr/local/bin/prettier
+    sudo ln -s /workspaces/github/bin/eslint /usr/local/bin/eslint
+    sudo ln -s /workspaces/github/bin/rubocop /usr/local/bin/rubocop
+    sudo ln -s /workspaces/github/bin/srb /usr/local/bin/srb
+    sudo ln -s /workspaces/github/bin/bundle /usr/local/bin/bundle
+    sudo ln -s /workspaces/github/bin/solargraph /usr/local/bin/solargraph
 fi
 
 pip3 install pynvim

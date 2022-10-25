@@ -24,8 +24,8 @@ if features.eslint then
 end
 
 if features.rubocop then
-	table.insert(sources, formatting.rubocop.with({ command = "bin/rubocop" }))
-	table.insert(sources, diagnostics.rubocop.with({ command = "bin/rubocop" }))
+	table.insert(sources, formatting.rubocop)
+	table.insert(sources, diagnostics.rubocop)
 end
 
 if features.golangci_lint then
@@ -36,9 +36,7 @@ if features.stylua then
 	table.insert(sources, diagnostics.stylua)
 end
 
-if vim.fn.executable("bin/tsc") then
-	table.insert(sources, diagnostics.tsc.with({ command = "bin/tsc" }))
-else
+if features.tsc then
 	table.insert(sources, diagnostics.tsc)
 end
 
