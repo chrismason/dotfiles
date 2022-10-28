@@ -18,4 +18,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases.zsh
 
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs --ignore-file "~/.ignore"'
+
 export GPG_TTY=$(tty)
