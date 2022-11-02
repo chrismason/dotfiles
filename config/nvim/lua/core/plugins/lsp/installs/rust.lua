@@ -8,5 +8,20 @@ end
 rt.setup({
     server = {
         on_attach = cfg.on_attach,
+        settings = {
+            ["rust-analyzer"] = {
+                -- checkOnSave = {
+                --     command = "clippy",
+                --     allFeature = true,
+                -- },
+                inlayHints = {
+                    lifetimeElisionHints = {
+                        enable = "always",
+                        useParameterNames = true,
+                    },
+                    reborrowHints = "always",
+                },
+            },
+        },
     }
 })
