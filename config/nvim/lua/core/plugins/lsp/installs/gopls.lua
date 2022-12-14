@@ -4,21 +4,21 @@ local config = cfg.defaults()
 local features = require("core.plugins.lsp.features")
 
 config.on_attach = function(client, bufnr)
-	client.server_capabilities.documentFormattingProvider = not features.golangci_lint
-	client.server_capabilities.documentRangeFormattingProvider = not features.golangci_lint
+    client.server_capabilities.documentFormattingProvider = true
+    client.server_capabilities.documentRangeFormattingProvider = true
 
-	cfg.on_attach(client, bufnr)
+    cfg.on_attach(client, bufnr)
 end
 
 config.cmd = { "gopls", "serve" }
 config.settings = {
-	gopls = {
-		analyses = {
-			unusedparams = true,
-			shadow = true,
-		},
-		staticcheck = true,
-	},
+    gopls = {
+        analyses = {
+            unusedparams = true,
+            shadow = true,
+        },
+        staticcheck = true,
+    },
 }
 
 lspconfig.gopls.setup(config)
