@@ -8,6 +8,8 @@ if not cmp_ok or not autopairs_ok or not cmp_autopairs_ok or not luasnip_ok or n
   return
 end
 
+table.unpack = table.unpack or unpack
+
 vim.cmd([[
   autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 ]])
