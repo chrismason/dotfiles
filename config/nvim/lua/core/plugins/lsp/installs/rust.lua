@@ -1,4 +1,27 @@
-local lspconfig = require("lspconfig")
-local config = require("core.plugins.lsp.defaults").defaults()
+local rt_ok, rt = pcall(require, "rust-tools")
+local cfg = require("core.plugins.lsp.defaults")
 
-lspconfig.rust_analyzer.setup(config)
+if not rt_ok then
+    return
+end
+
+rt.setup({
+    server = {
+        on_attach = cfg.on_attach,
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy",
+                    allFeature = true,
+                },
+                inlayHints = {
+                    lifetimeElisionHints = {
+                        enable = "always",
+                        useParameterNames = true,
+                    },
+                    reborrowHints = "always",
+                },
+            },
+        },
+    }
+})

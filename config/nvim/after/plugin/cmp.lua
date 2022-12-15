@@ -8,6 +8,8 @@ if not cmp_ok or not autopairs_ok or not cmp_autopairs_ok or not luasnip_ok or n
   return
 end
 
+table.unpack = table.unpack or unpack
+
 vim.cmd([[
   autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
 ]])
@@ -19,7 +21,7 @@ autopairs.setup {
 }
 
 local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 

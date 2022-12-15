@@ -19,7 +19,8 @@ configs.setup({
     'yaml',
     'c_sharp',
     'rust',
-    'ruby'
+    'ruby',
+    'toml',
   },
   highlight = {
     enable = true,
