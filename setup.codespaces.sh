@@ -49,7 +49,8 @@ if [ -d "/workspaces/github/bin/" ]; then
     sudo ln -s /workspaces/github/bin/srb /usr/local/bin/srb
     sudo ln -s /workspaces/github/bin/bundle /usr/local/bin/bundle
     sudo ln -s /workspaces/github/bin/solargraph /usr/local/bin/solargraph
+elif ! command -v npm &> /dev/null; then
+    sudo apt-get install -y npm
 fi
 
 pip3 install pynvim
-# nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
