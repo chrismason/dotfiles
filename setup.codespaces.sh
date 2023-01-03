@@ -19,6 +19,7 @@ sudo apt-get install -y \
 
 wget $RDM_DOWNLOAD_URL -P $TMP_RDM_DIR
 chmod +x $TMP_RDM_DIR/rdm-linux-amd64
+mkdir -p $HOME/.local/bin/
 mv $TMP_RDM_DIR/rdm-linux-amd64 "$HOME/.local/bin/rdm" >/dev/null
 
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
