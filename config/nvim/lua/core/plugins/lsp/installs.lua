@@ -2,22 +2,22 @@ local mason_ok, mason = pcall(require, "mason")
 local mason_lsp_ok, mason_lsp = pcall(require, "mason-lspconfig")
 
 if not mason_ok or not mason_lsp_ok then
-	return
+    return
 end
 
 mason.setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+        },
+    },
 })
 
 mason_lsp.setup({
-	ensure_installed = { "bashls", "gopls", "jsonls", "sumneko_lua", "tsserver", "yamlls" },
-	-- automatic_installation = true,
+    ensure_installed = { "bashls", "gopls", "jsonls", "lua_ls", "tsserver", "yamlls" },
+    -- automatic_installation = true,
 })
 
 require("core.plugins.lsp.installs.bash")
