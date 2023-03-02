@@ -3,11 +3,6 @@ local map = require('core.utils').map
 local silent = { silent = true }
 
 -- normal mode
-map('n', '<c-h>', '<c-w>h')
-map('n', '<c-j>', '<c-w>j')
-map('n', '<c-k>', '<c-w>k')
-map('n', '<c-l>', '<c-w>l')
-
 map('n', 'Y', 'yg$')
 map('n', '<leader>y', '"+y')
 map('n', '<leader>Y', 'gg"+yG')
@@ -23,6 +18,10 @@ map('v', 'p', '"_dP')
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
 map('n', '<C-f>', ':silent !tmux neww tmux-sessionizer<cr>')
+map('n', '<C-h>', '<C-w><C-h>')
+map('n', '<C-j>', '<C-w><C-j>')
+map('n', '<C-k>', '<C-w><C-k>')
+map('n', '<C-l>', '<C-w><C-l>')
 map('n', '<leader>+', ':vertical resize +5<cr>')
 map('n', '<leader>-', ':vertical resize -5<cr>')
 map('n', '<leader>rp', ':resize 100<cr>')
