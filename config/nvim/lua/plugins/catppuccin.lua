@@ -24,6 +24,7 @@ return {
         telescope = true,
         harpoon = true,
         mason = true,
+        navic = true,
         native_lsp = {
           enabled = true,
           virtual_text = {

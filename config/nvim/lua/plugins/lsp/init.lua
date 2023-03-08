@@ -19,5 +19,11 @@ return {
     config = function()
       require("plugins.lsp.null-ls")
     end
-  }
+  },
+  {
+    "SmiteshP/nvim-navic",
+    config = function()
+      require("plugins.lsp.navic")
+    end,
+  },
 }
