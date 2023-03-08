@@ -4,8 +4,8 @@ local features = require("plugins.lsp.features")
 local config = cfg.defaults()
 
 config.on_attach = function(client, bufnr)
-    client.server_capabilities.documentFormattingProvider = not features.stylua
-    client.server_capabilities.documentRangeFormattingProvider = not features.stylua
+    client.server_capabilities.documentFormattingProvider = true
+    client.server_capabilities.documentRangeFormattingProvider = true
 
     cfg.on_attach(client, bufnr)
 end
