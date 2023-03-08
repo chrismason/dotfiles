@@ -110,6 +110,8 @@ local function on_attach(client, bufnr)
     },
   }, bufnr)
 
+  require("nvim-navic").attach(client, bufnr)
+
   -- require("core.plugins.colorscheme").set_highlights()
   print("LSP attached")
 end
