@@ -2,14 +2,16 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     {
-      "nvim-telescope/telescope.fzf-native.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
     },
     {
       "nvim-telescope/telescope-live-grep-args.nvim",
+    },
+    {
+      "nvim-telescope/telescope-ui-select.nvim",
     }
   },
-  cmd = "Telescope",
   config = function()
     local actions_ok, actions = pcall(require, 'telescope.actions')
     local telescope_ok, telescope = pcall(require, 'telescope')

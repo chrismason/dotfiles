@@ -1,5 +1,5 @@
 local rt_ok, rt = pcall(require, "rust-tools")
-local cfg = require("core.plugins.lsp.defaults")
+local cfg = require("plugins.lsp.config")
 
 if not rt_ok then
     return

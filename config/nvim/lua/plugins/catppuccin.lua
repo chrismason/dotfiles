@@ -46,5 +46,7 @@ return {
         gitsigns = true,
       }
     })
+
+    vim.cmd('color catppuccin')
   end
 }

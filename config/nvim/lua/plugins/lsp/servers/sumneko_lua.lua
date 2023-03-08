@@ -1,6 +1,6 @@
 local lspconfig = require("lspconfig")
-local cfg = require("core.plugins.lsp.defaults")
-local features = require("core.plugins.lsp.features")
+local cfg = require("plugins.lsp.config")
+local features = require("plugins.lsp.features")
 local config = cfg.defaults()
 
 config.on_attach = function(client, bufnr)
