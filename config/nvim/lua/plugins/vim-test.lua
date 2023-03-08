@@ -1,19 +1,19 @@
 return {
-  "vim-test/vim-test",
-  dependencies = {
-    "tpope/vim-dispatch",
-  },
-  config = function()
-    local map = require('core.utils').map
-    local g = vim.g
+    "vim-test/vim-test",
+    dependencies = {
+        "tpope/vim-dispatch",
+    },
+    config = function()
+        local g = vim.g
 
-    g['test#strategy'] = 'neovim'
-    g['test#csharp#runner'] = 'dotnettest'
-    g['test#go#runner'] = 'gotest'
-
-    map('n', '<leader>tn', ":TestNearest<CR>", { noremap = true, silent = true })
-    map('n', '<leader>tf', ":TestFile<CR>", { noremap = true, silent = true })
-    map('n', '<leader>ts', ':TestSuite<CR>', { noremap = true, silent = true })
-    map('n', '<leader>tl', ':TestLast<CR>', { noremap = true, silent = true })
-  end
+        g['test#strategy'] = 'neovim'
+        g['test#csharp#runner'] = 'dotnettest'
+        g['test#go#runner'] = 'gotest'
+    end,
+    keys = {
+        { "<leader>tn", "<cmd>TestNearest<CR>", { remap = false, silent = true } },
+        { "<leader>tf", "<cmd>TestFile<CR>",    { remap = false, silent = true } },
+        { "<leader>ts", "<cmd>TestSuite<CR>",   { remap = false, silent = true } },
+        { "<leader>tl", "<cmd>TestLast<CR>",    { remap = false, silent = true } },
+    }
 }

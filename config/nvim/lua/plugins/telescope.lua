@@ -12,21 +12,14 @@ return {
       "nvim-telescope/telescope-ui-select.nvim",
     }
   },
+  cmd = "Telescope",
   config = function()
     local actions_ok, actions = pcall(require, 'telescope.actions')
     local telescope_ok, telescope = pcall(require, 'telescope')
-    local map = require('core.utils').map
 
     if not actions_ok or not telescope_ok then
       return
     end
-
-    map('n', '<leader>pf', [[<cmd>lua require'telescope.builtin'.find_files()<cr>]])
-    map('n', '<C-p>', [[<cmd>lua require'telescope.builtin'.git_files()<cr>]])
-    map('n', '<leader>ps', [[<cmd>lua require'telescope.builtin'.live_grep()<cr>]])
-    map('n', '<leader>pb', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]])
-    map('n', '<leader>pgs', [[<cmd>lua require'telescope.builtin'.git_status()<cr>]])
-    map('n', '<leader>fgc', [[<cmd>lua require'telescope.builtin'.git_commits()<cr>]])
 
     telescope.setup {
       defaults = {
@@ -67,4 +60,12 @@ return {
     telescope.load_extension('fzf')
     telescope.load_extension('ui-select')
   end,
+  keys = {
+    { "<leader>pf",  "<cmd>lua require'telescope.builtin'.find_files()<cr>" },
+    { "<C-p>",       "<cmd>lua require'telescope.builtin'.git_files()<cr>" },
+    { "<leader>ps",  "<cmd>lua require'telescope.builtin'.live_grep()<cr>" },
+    { "<leader>pb",  "<cmd>lua require'telescope.builtin'.buffers()<cr>" },
+    { "<leader>pgs", "<cmd>lua require'telescope.builtin'.git_status()<cr>" },
+    { "<leader>fgc", "<cmd>lua require'telescope.builtin'.git_commits()<cr>" },
+  }
 }
