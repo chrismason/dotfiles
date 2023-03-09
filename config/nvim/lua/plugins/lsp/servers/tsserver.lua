@@ -1,7 +1,7 @@
 local lspconfig = require("lspconfig")
-local cfg = require("core.plugins.lsp.defaults")
+local cfg = require("plugins.lsp.config")
 local config = cfg.defaults()
-local features = require("core.plugins.lsp.features")
+local features = require("plugins.lsp.features")
 
 config.on_attach = function(client, bufnr)
 	client.server_capabilities.documentFormattingProvider = not features.prettier

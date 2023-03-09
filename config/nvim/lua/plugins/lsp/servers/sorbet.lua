@@ -1,4 +1,4 @@
-local features = require("core.plugins.lsp.features")
+local features = require("plugins.lsp.config")
 
 if not features.sorbet then
   return
