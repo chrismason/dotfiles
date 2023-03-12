@@ -8,8 +8,13 @@ end
 rt.setup({
     server = {
         on_attach = cfg.on_attach,
+        tools = {
+            inlay_hints = {
+                auto = false,
+            }
+        },
         settings = {
-            ["rust-analyzer"] = {
+                ["rust-analyzer"] = {
                 checkOnSave = {
                     command = "clippy",
                     allFeature = true,

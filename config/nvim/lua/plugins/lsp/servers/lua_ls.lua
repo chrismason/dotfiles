@@ -1,6 +1,5 @@
 local lspconfig = require("lspconfig")
 local cfg = require("plugins.lsp.config")
-local features = require("plugins.lsp.features")
 local config = cfg.defaults()
 
 config.on_attach = function(client, bufnr)
@@ -15,6 +14,9 @@ config.settings = {
         diagnostics = {
             globals = { "vim", "bit" },
         },
+        hint = {
+            enable = true
+        }
     },
 }
 
