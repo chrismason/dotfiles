@@ -2,18 +2,18 @@ local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 
 mason.setup({
-  ui = {
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗",
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+        },
     },
-  },
 })
 
 mason_lsp.setup({
-  ensure_installed = { "bashls", "gopls", "jsonls", "lua_ls", "tsserver", "yamlls" },
-  -- automatic_installation = true,
+    ensure_installed = { "bashls", "gopls", "jsonls", "lua_ls", "tsserver", "yamlls", "terraform_lsp" },
+    -- automatic_installation = true,
 })
 
 require("plugins.lsp.servers.bash")
@@ -25,3 +25,4 @@ require("plugins.lsp.servers.sorbet")
 require("plugins.lsp.servers.lua_ls")
 require("plugins.lsp.servers.tsserver")
 require("plugins.lsp.servers.yamlls")
+require("plugins.lsp.servers.terraform")
