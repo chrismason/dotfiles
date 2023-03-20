@@ -12,7 +12,7 @@ mason.setup({
 })
 
 mason_lsp.setup({
-    ensure_installed = { "bashls", "gopls", "jsonls", "lua_ls", "tsserver", "yamlls", "terraform_lsp" },
+    ensure_installed = { "bashls", "gopls", "jsonls", "lua_ls", "tsserver", "yamlls", "terraformls" },
     -- automatic_installation = true,
 })
 
