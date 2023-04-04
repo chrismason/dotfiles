@@ -6,7 +6,8 @@ set -x
 
 TMP_NVIM_DIR="/tmp/neovim"; mkdir -p $TMP_NVIM_DIR
 TMP_RDM_DIR="/tmp/rdm"; mkdir -p $TMP_RDM_DIR
-NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
+NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/latest/download/nvim.appimage"
+# NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 RDM_DOWNLOAD_URL="https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64"
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
@@ -23,9 +24,12 @@ mkdir -p $HOME/.local/bin/
 mv $TMP_RDM_DIR/rdm-linux-amd64 "$HOME/.local/bin/rdm" >/dev/null
 
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
-tar -xf "$TMP_NVIM_DIR/nvim-linux64.tar.gz" --directory $TMP_NVIM_DIR
-cp -RT "$TMP_NVIM_DIR/nvim-linux64/" "$HOME/.local" >/dev/null
-
+chmod u+x $TMP_NVIM_DIR/nvim.appimage
+$TMP_NVIM_DIR/nvim.appimage --appimage-extract
+mv squashfs-root "$HOME/.local/nvim"
+sudo ln -s "$HOME/.local/nvim/AppRun" /usr/bin/nvim
+# tar -xf "$TMP_NVIM_DIR/nvim-linux64.tar.gz" --directory $TMP_NVIM_DIR
+# cp -RT "$TMP_NVIM_DIR/nvim-linux64/" "$HOME/.local" >/dev/null
 rm -rf $TMP_NVIM_DIR
 
 # Setup config files
