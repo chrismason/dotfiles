@@ -9,6 +9,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     virtual_text = true,
     signs = true,
     update_in_insert = false,
+    underline = true,
+    virtual_text = {
+        spacing = 5,
+        severity_limit = "Hint",
+    },
 })
 
 -- Handle formatting in a smarter way
@@ -95,13 +100,6 @@ local function on_attach(client, bufnr)
     buf_map("v", "<leader>ga", "<cmd>lua vim.lsp.buf.range_code_actions()<cr>", opts)
     buf_map("n", "<leader>gf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
     buf_map("n", "<C-K>", '<cmd>lua require("lsp_signature").signature()<cr>', opts)
-
-    -- if client.supports_method("textDocument/formatting") then
-    --   vim.cmd([[augroup LspFormatting]])
-    --   vim.cmd([[autocmd! * <buffer>]])
-    --   vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ sync = true, bufnr = bufnr })]])
-    --   vim.cmd([[augroup END]])
-    -- end
 
     require("lsp_signature").on_attach({
         bind = true, -- This is mandatory, otherwise border config won't get registered.
