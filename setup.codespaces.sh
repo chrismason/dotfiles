@@ -6,7 +6,7 @@ set -x
 
 TMP_NVIM_DIR="/tmp/neovim"; mkdir -p $TMP_NVIM_DIR
 TMP_RDM_DIR="/tmp/rdm"; mkdir -p $TMP_RDM_DIR
-TMP_OMNISHARP_DIR="/tmp/omnisharp"; mkdir -p $TTMP_OMNISHARP_DIR
+TMP_OMNISHARP_DIR="/tmp/omnisharp"; mkdir -p $TMP_OMNISHARP_DIR
 NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/latest/download/nvim.appimage"
 RDM_DOWNLOAD_URL="https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64"
 OMNISHARP_DOWNLOAD_URL="https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-linux-x64-net6.0.zip"
@@ -23,6 +23,7 @@ wget $RDM_DOWNLOAD_URL -P $TMP_RDM_DIR
 chmod +x $TMP_RDM_DIR/rdm-linux-amd64
 mkdir -p $HOME/.local/bin/
 mv $TMP_RDM_DIR/rdm-linux-amd64 "$HOME/.local/bin/rdm" >/dev/null
+rm -rf $TMP_RDM_DIR
 
 wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
 chmod u+x $TMP_NVIM_DIR/nvim.appimage
@@ -31,10 +32,11 @@ mv squashfs-root "$HOME/.local/nvim"
 sudo ln -s "$HOME/.local/nvim/AppRun" /usr/bin/nvim
 rm -rf $TMP_NVIM_DIR
 
-wget $RDM_DOWNLOAD_URL -P $TMP_RDM_DIR
-chmod +x $TMP_RDM_DIR/rdm-linux-amd64
-mkdir -p $HOME/.local/bin/
-mv $TMP_RDM_DIR/rdm-linux-amd64 "$HOME/.local/bin/rdm" >/dev/null
+wget $OMNISHARP_DOWNLOAD_URL -P $TMP_OMNISHARP_DIR
+unzip $TMP_OMNISHARP_DIR/omnisharp-linux-x64-net6.0.zip -d $TMP_OMNISHARP_DIR/omnisharp
+mv $TMP_OMNISHARP_DIR/omnisharp "$HOME/.local/omnisharp" >/dev/null
+chmod +x "$HOME/.local/omnisharp/OmniSharp.dll"
+rm -rf $TMP_OMNISHARP_DIR
 
 # Setup config files
 rm -rf $HOME/.gitconfig

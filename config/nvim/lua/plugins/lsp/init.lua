@@ -7,6 +7,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "ray-x/lsp_signature.nvim",
             "simrat39/rust-tools.nvim",
+            "Hoffs/omnisharp-extended-lsp.nvim",
         },
         config = function()
             require("plugins.lsp.config")
