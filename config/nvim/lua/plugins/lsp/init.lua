@@ -8,10 +8,12 @@ return {
             "ray-x/lsp_signature.nvim",
             "simrat39/rust-tools.nvim",
             "Hoffs/omnisharp-extended-lsp.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
         config = function()
             require("plugins.lsp.config")
             require("plugins.lsp.mason-lspconfig")
+            require("plugins.lsp.tools")
         end
     },
     {
