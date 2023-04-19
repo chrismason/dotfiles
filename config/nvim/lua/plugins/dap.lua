@@ -38,21 +38,21 @@ return {
             end
         end,
         keys = {
-            { "<F5>", "<cmd>lua require'dap'.continue()<cr>" },
-            { "<S-F5>", function()
+            { "<leader>vc", "<cmd>lua require'dap'.continue()<cr>" },
+            { "<leader>vs", function()
                 local dap = require('dap')
                 local dapui = require('dapui')
                 dap.close()
                 dapui.close()
             end },
-            { "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<cr>" },
-            { "<S-F9>", function()
+            { "<leader>b",  "<cmd>lua require'dap'.toggle_breakpoint()<cr>" },
+            { "<leader>B", function()
                 local dap = require('dap')
                 dap.set_breakpoint(vim.fn.input('Breakpoint Condition: '))
             end },
-            { "<F10>", "<cmd>lua require'dap'.step_over()<cr>" },
-            { "<F11>", "<cmd>lua require'dap'.step_into()<cr>" },
-            { "<F12>", "<cmd>lua require'dap'.step_out()<cr>" },
+            { "<leader>vv", "<cmd>lua require'dap'.step_over()<cr>" },
+            { "<leader>vi", "<cmd>lua require'dap'.step_into()<cr>" },
+            { "<leader>vo", "<cmd>lua require'dap'.step_out()<cr>" },
         },
     },
 }
