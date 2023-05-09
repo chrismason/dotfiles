@@ -57,6 +57,18 @@ local function on_attach(client, bufnr)
 	print("LSP attached")
 end
 
+require("fidget").setup({
+	text = {
+		spinner = "moon",
+	},
+	align = {
+		bottom = true,
+	},
+	window = {
+		relative = "editor",
+	},
+})
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 M.defaults = function()
