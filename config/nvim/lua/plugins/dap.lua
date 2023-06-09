@@ -38,9 +38,9 @@ return {
             end
         end,
         keys = {
-            { "<F5>", "<cmd>lua require'dap'.continue()<cr>" },
+            { "<leader>vc", "<cmd>lua require'dap'.continue()<cr>" },
             {
-                "<S-F5>",
+                "<leader>vs",
                 function()
                     local dap = require("dap")
                     local dapui = require("dapui")
@@ -48,9 +48,9 @@ return {
                     dapui.close()
                 end,
             },
-            { "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<cr>" },
+            { "<leader>b",  "<cmd>lua require'dap'.toggle_breakpoint()<cr>" },
             {
-                "<S-F9>",
+                "<leader>B",
                 function()
                     local dap = require("dap")
                     dap.set_breakpoint(vim.fn.input("Breakpoint Condition: "))
