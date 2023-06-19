@@ -9,7 +9,10 @@ return {
             "simrat39/rust-tools.nvim",
             "Hoffs/omnisharp-extended-lsp.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
-            "j-hui/fidget.nvim",
+            {
+                "j-hui/fidget.nvim",
+                tag = "legacy",
+            },
         },
         config = function()
             require("plugins.lsp.config")
