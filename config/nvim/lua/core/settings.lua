@@ -46,6 +46,18 @@ opt.updatetime = 100
 opt.clipboard = { "unnamed", "unnamedplus" }
 opt.isfname:append("@-@")
 
+opt.list = false
+opt.listchars = {
+	eol = "↲",
+	tab = "»·",
+	space = "␣",
+	trail = "-",
+	extends = "☛",
+	precedes = "☚",
+	conceal = "┊",
+	nbsp = "☠",
+}
+
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
