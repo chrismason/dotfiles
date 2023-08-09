@@ -42,7 +42,7 @@ rm -rf $TMP_OMNISHARP_DIR
 rm -rf $HOME/.gitconfig
 ln -s $(pwd)/gitconfig-codespaces $HOME/.gitconfig
 
-ln -s $(pwd)/tmux.conf $HOME/.tmux.conf
+ln -s $(pwd)/tmux.codespaces.conf $HOME/.tmux.conf
 ln -s $(pwd)/aliases.zsh $HOME/.aliases.zsh
 ln -s $(pwd)/zshrc $HOME/.zshrc
 
