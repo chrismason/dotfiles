@@ -13,7 +13,7 @@ return {
 			"rafamadriz/friendly-snippets",
 
 			-- Other
-			"windwp/nvim-autopairs",
+			--"windwp/nvim-autopairs",
 		},
 		event = "InsertEnter",
 		config = function()
