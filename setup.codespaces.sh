@@ -4,10 +4,8 @@ exec > >(tee -i $HOME/dotfiles_install.log)
 exec 2>&1
 set -x
 
-TMP_NVIM_DIR="/tmp/neovim"; mkdir -p $TMP_NVIM_DIR
 TMP_RDM_DIR="/tmp/rdm"; mkdir -p $TMP_RDM_DIR
 TMP_OMNISHARP_DIR="/tmp/omnisharp"; mkdir -p $TMP_OMNISHARP_DIR
-NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/latest/download/nvim.appimage"
 RDM_DOWNLOAD_URL="https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64"
 OMNISHARP_DOWNLOAD_URL="https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-linux-x64-net6.0.zip"
 
@@ -25,12 +23,18 @@ mkdir -p $HOME/.local/bin/
 mv $TMP_RDM_DIR/rdm-linux-amd64 "$HOME/.local/bin/rdm" >/dev/null
 rm -rf $TMP_RDM_DIR
 
-wget $NVIM_DOWNLOAD_URL -P $TMP_NVIM_DIR
-chmod u+x $TMP_NVIM_DIR/nvim.appimage
-$TMP_NVIM_DIR/nvim.appimage --appimage-extract
-mv squashfs-root "$HOME/.local/nvim"
-sudo ln -s "$HOME/.local/nvim/AppRun" /usr/bin/nvim
-rm -rf $TMP_NVIM_DIR
+# https://github.com/neovim/neovim
+if ! command -v nvim &> /dev/null
+then
+  gh release download --clobber --dir /tmp/ --repo neovim/neovim --pattern "nvim.appimage"
+  chmod u+x /tmp/nvim.appimage
+
+  /tmp/nvim.appimage --appimage-extract
+  squashfs-root/AppRun --version
+
+  sudo mv squashfs-root /
+  sudo ln -s /squashfs-root/AppRun /usr/local/bin/nvim
+fi
 
 wget $OMNISHARP_DOWNLOAD_URL -P $TMP_OMNISHARP_DIR
 unzip $TMP_OMNISHARP_DIR/omnisharp-linux-x64-net6.0.zip -d $TMP_OMNISHARP_DIR/omnisharp
