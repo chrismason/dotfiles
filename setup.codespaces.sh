@@ -67,4 +67,4 @@ elif ! command -v npm &> /dev/null; then
     sudo apt-get install -y npm
 fi
 
-pip3 install pynvim
+# pip3 install pynvim
