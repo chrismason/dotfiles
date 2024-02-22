@@ -120,7 +120,7 @@ font:
     family: MonaspiceAr Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Semiwide Regular
 
   # Bold font face
   bold:
