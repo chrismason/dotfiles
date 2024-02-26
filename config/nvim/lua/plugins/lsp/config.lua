@@ -43,6 +43,24 @@ local function on_attach(client, bufnr)
 		require("nvim-navic").attach(client, bufnr)
 	end
 
+	if client.server_capabilities.documentHighlightProvider then
+		local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+			buffer = bufnr,
+			group = group,
+			callback = function()
+				vim.lsp.buf.document_highlight()
+			end,
+		})
+		vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+			buffer = bufnr,
+			group = group,
+			callback = function()
+				vim.lsp.buf.clear_references()
+			end,
+		})
+	end
+
 	if client.name == "omnisharp" then
 		local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
 		for i, v in ipairs(tokenModifiers) do
@@ -53,8 +71,6 @@ local function on_attach(client, bufnr)
 			tokenTypes[i] = v:gsub(" ", "_")
 		end
 	end
-
-	print("LSP attached")
 end
 
 require("fidget").setup({
