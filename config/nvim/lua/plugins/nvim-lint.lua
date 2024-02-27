@@ -1,6 +1,9 @@
 return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufNewFile" },
+	cond = function()
+		return false
+	end,
 	config = function()
 		local lint = require("lint")
 
