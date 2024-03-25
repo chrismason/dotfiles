@@ -69,6 +69,11 @@ config.keys = {
 		mods = "CTRL|SHIFT|ALT",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
+	{
+		key = "x",
+		mods = "CTRL",
+		action = wezterm.action.CloseCurrentPane({ confirm = false }),
+	},
 }
 
 -- and finally, return the configuration to wezterm
