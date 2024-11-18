@@ -14,14 +14,14 @@ return {
       "b0o/SchemaStore.nvim",
     },
     config = function()
-      require("neodev").setup {}
+      require("neodev").setup({})
 
       local capabilities = nil
       if pcall(require, "cmp_nvim_lsp") then
         capabilities = require("cmp_nvim_lsp").default_capabilities()
       end
 
-      local lspconfig = require "lspconfig"
+      local lspconfig = require("lspconfig")
 
       local servers = {
         bashls = true,
@@ -50,7 +50,23 @@ return {
             semanticTokensProvider = vim.NIL,
           },
         },
-        rust_analyzer = true,
+        rust_analyzer = {
+          cmd = {
+            "rustup",
+            "run",
+            "stable",
+            "rust-analyzer",
+          },
+          settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = true,
+              check = {
+                command = "clippy",
+                features = "all",
+              },
+            },
+          },
+        },
         templ = true,
         ts_ls = {
           server_capabilities = {
@@ -98,7 +114,7 @@ return {
       }
 
       vim.list_extend(ensure_installed, servers_to_install)
-      require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       for name, config in pairs(servers) do
         if config == true then
@@ -125,7 +141,7 @@ return {
             settings = {}
           end
 
-          local builtin = require "telescope.builtin"
+          local builtin = require("telescope.builtin")
 
           vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
           vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0 })
@@ -135,6 +151,7 @@ return {
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 
           vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
+          vim.keymap.set("n", "<space>cf", vim.lsp.buf.format, { buffer = 0 })
           vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
           vim.keymap.set("n", "<space>wd", builtin.lsp_document_symbols, { buffer = 0 })
 
@@ -158,8 +175,8 @@ return {
       })
 
       -- Autoformatting Setup
-      local conform = require "conform"
-      conform.setup {
+      local conform = require("conform")
+      conform.setup({
         formatters_by_ft = {
           go = { "gofmt", "goimports" },
           lua = { "stylua" },
@@ -167,7 +184,7 @@ return {
           rust = { "rustfmt" },
           terraform = { "terraform_fmt" },
         },
-      }
+      })
 
       conform.formatters.injected = {
         options = {
@@ -177,23 +194,23 @@ return {
 
       vim.api.nvim_create_autocmd("BufWritePre", {
         callback = function(args)
-          require("conform").format {
+          require("conform").format({
             bufnr = args.buf,
             lsp_fallback = true,
             quiet = true,
-          }
+          })
         end,
       })
 
       require("lsp_lines").setup()
-      vim.diagnostic.config { virtual_text = true, virtual_lines = false }
+      vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 
       vim.keymap.set("", "<leader>l", function()
         local config = vim.diagnostic.config() or {}
         if config.virtual_text then
-          vim.diagnostic.config { virtual_text = false, virtual_lines = true }
+          vim.diagnostic.config({ virtual_text = false, virtual_lines = true })
         else
-          vim.diagnostic.config { virtual_text = true, virtual_lines = false }
+          vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
         end
       end, { desc = "Toggle lsp_lines" })
     end,
