@@ -4,7 +4,7 @@ if not actions_ok then
   return
 end
 
-require("telescope").setup {
+require("telescope").setup({
   defaults = {
     mappings = {
       i = {
@@ -20,10 +20,10 @@ require("telescope").setup {
     wrap_results = true,
     fzf = {},
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown {},
+      require("telescope.themes").get_dropdown({}),
     },
   },
-}
+})
 
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "smart_history")
@@ -42,3 +42,4 @@ vim.keymap.set("n", "<leader>pws", function()
 end)
 -- vim.keymap.set("n", "<leader>pgs", builtin.git_status)
 -- vim.keymap.set("n", "<leader>pgc", builtin.git_commits)
+
