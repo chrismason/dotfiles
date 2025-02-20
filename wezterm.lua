@@ -11,14 +11,14 @@ if wezterm.config_builder then
 end
 
 config.font = wezterm.font_with_fallback({
-	"MonaspiceAr Nerd Font",
+	"Monaspace Argon",
 })
 config.font_rules = {
 	{
 		intensity = "Bold",
 		italic = true,
 		font = wezterm.font({
-			family = "MonaspiceRn Nerd Font",
+			family = "Monaspace Radon",
 			weight = "Bold",
 			style = "Italic",
 		}),
@@ -27,7 +27,7 @@ config.font_rules = {
 		intensity = "Normal",
 		italic = true,
 		font = wezterm.font({
-			family = "MonaspiceRn Nerd Font",
+			family = "Monaspace Radon",
 			weight = "Regular",
 			style = "Italic",
 		}),
@@ -36,7 +36,7 @@ config.font_rules = {
 		intensity = "Half",
 		italic = true,
 		font = wezterm.font({
-			family = "MonaspiceRn Nerd Font",
+			family = "Monaspace Radon",
 			weight = "Light",
 			style = "Italic",
 		}),
