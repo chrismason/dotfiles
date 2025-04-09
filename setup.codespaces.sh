@@ -26,7 +26,7 @@ rm -rf $TMP_RDM_DIR
 # https://github.com/neovim/neovim
 if ! command -v nvim &> /dev/null
 then
-  gh release download --clobber --output /tmp/nvim.appimage --repo neovim/neovim --pattern "nvim-linux-x86_64.appimage"
+  gh release download --clobber --output /tmp/nvim.appimage --repo neovim/neovim-releases --pattern "nvim-linux-x86_64.appimage"
   chmod u+x /tmp/nvim.appimage
 
   /tmp/nvim.appimage --appimage-extract
