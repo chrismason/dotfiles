@@ -11,7 +11,7 @@ return {
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },
-    fuzzy = { implementation = "lua" },
+    fuzzy = { implementation = "prefer_rust_with_warning" },
   },
   opts_extend = { "sources.default" },
   signature = { enabled = true },
