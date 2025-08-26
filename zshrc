@@ -12,6 +12,8 @@ export GONOSUMDB="github.com/github/*"
 
 export GPG_TTY=$(tty)
 
+export TMP_USE_SYNCED_UI_MANIFEST=true
+
 ZSH_THEME="robbyrussell"
 
 plugins=(git)
