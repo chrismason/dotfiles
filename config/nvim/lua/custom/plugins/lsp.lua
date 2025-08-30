@@ -25,7 +25,9 @@ return {
 
       local servers = {
         bashls = true,
-        denols = true,
+        denols = {
+          root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+        },
         gopls = {
           settings = {
             gopls = {
@@ -70,10 +72,15 @@ return {
         },
         templ = true,
         ts_ls = {
-          single_file = false,
+          single_file_support = false,
           server_capabilities = {
             documentFormattingProvider = false,
           },
+          root_dir = function(fname)
+            local util = lspconfig.util
+            return not util.root_pattern("deno.json", "deno.jsonc")(fname)
+              and util.root_pattern("tsconfig.json", "package.json")(fname)
+          end,
         },
         jsonls = {
           server_capabilities = {
