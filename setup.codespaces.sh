@@ -6,7 +6,7 @@ set -x
 
 TMP_RDM_DIR="/tmp/rdm"; mkdir -p $TMP_RDM_DIR
 TMP_OMNISHARP_DIR="/tmp/omnisharp"; mkdir -p $TMP_OMNISHARP_DIR
-RDM_DOWNLOAD_URL="https://github.com/BlakeWilliams/remote-development-manager/releases/latest/download/rdm-linux-amd64"
+RDM_DOWNLOAD_URL="https://github.com/BlakeWilliams/remote-development-manager/releases/download/v0.0.6/rdm-linux-amd64"
 OMNISHARP_DOWNLOAD_URL="https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-linux-x64-net6.0.zip"
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
@@ -34,6 +34,11 @@ then
 
   sudo mv squashfs-root /
   sudo ln -s /squashfs-root/AppRun /usr/local/bin/nvim
+fi
+
+if ! command -v copilot &> /dev/null
+then
+  curl -fsSL https://gh.io/copilot-install | bash
 fi
 
 wget $OMNISHARP_DOWNLOAD_URL -P $TMP_OMNISHARP_DIR
