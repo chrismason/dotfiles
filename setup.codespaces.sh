@@ -15,7 +15,8 @@ for command in sudo apt-get dpkg; do
 done
 sudo -n true
 
-packages=(ca-certificates ripgrep fzf fontconfig python3-pip)
+packages=(ca-certificates ripgrep fzf fontconfig python3-pip
+    libicu-dev libssl-dev zlib1g libstdc++6 libgcc-s1 libgssapi-krb5-2)
 for command in git python3 jq curl wget unzip tar gzip zsh; do
     if ! command -v "$command" >/dev/null 2>&1; then
         packages+=("$command")
@@ -51,9 +52,7 @@ for command in git gh python3 jq copilot curl wget unzip tar gzip zsh; do
 done
 
 TMP_RDM_DIR="/tmp/rdm"; mkdir -p $TMP_RDM_DIR
-TMP_OMNISHARP_DIR="/tmp/omnisharp"; mkdir -p $TMP_OMNISHARP_DIR
 RDM_DOWNLOAD_URL="https://github.com/BlakeWilliams/remote-development-manager/releases/download/v0.0.6/rdm-linux-amd64"
-OMNISHARP_DOWNLOAD_URL="https://github.com/OmniSharp/omnisharp-roslyn/releases/latest/download/omnisharp-linux-x64-net6.0.zip"
 
 sudo chsh -s "$(command -v zsh)" "$(whoami)"
 
@@ -76,11 +75,7 @@ then
   sudo ln -s /squashfs-root/AppRun /usr/local/bin/nvim
 fi
 
-wget $OMNISHARP_DOWNLOAD_URL -P $TMP_OMNISHARP_DIR
-unzip $TMP_OMNISHARP_DIR/omnisharp-linux-x64-net6.0.zip -d $TMP_OMNISHARP_DIR/omnisharp
-mv $TMP_OMNISHARP_DIR/omnisharp "$HOME/.local/omnisharp" >/dev/null
-chmod +x "$HOME/.local/omnisharp/OmniSharp.dll"
-rm -rf $TMP_OMNISHARP_DIR
+bash "$(dirname -- "${BASH_SOURCE[0]}")/setup.omnisharp.sh"
 
 # Setup config files
 ln -sfn "$(pwd)/gitconfig-codespaces" "$HOME/.gitconfig"

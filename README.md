@@ -44,3 +44,24 @@ and installer failures stop setup with an error; a failed download cannot be
 hidden by a successful command later in a pipeline. Provisioning tools does not
 authenticate them or grant repository access. This provisioning is Linux-only;
 the macOS setup is unchanged.
+
+### OmniSharp
+
+Codespaces setup installs the pinned OmniSharp v2.0.0 stdio release for Linux
+x64 or ARM64 into `~/.local/omnisharp`. Launch it with
+`~/.local/omnisharp/run`; this invokes the managed entrypoint using a .NET 10
+SDK/runtime, rather than trying to execute `OmniSharp.dll` directly.
+An existing .NET 10 SDK/runtime is reused when available on PATH; otherwise the
+official .NET installer provisions it under `~/.local/share/dotnet`, without
+changing the default `dotnet` on PATH. The public apt setup includes the native
+ICU, OpenSSL, zlib, Kerberos, and C++ runtime dependencies. Projects may still require
+additional SDK versions specified by their `global.json`.
+
+The archive is checked against the release's `SHA256SUMS` and extracted in an
+isolated staging directory. Reruns preserve the previous installation, including
+any local files, under `~/.local/omnisharp-backup.*/omnisharp` before replacing it;
+they never extract into or nest inside the existing installation. These backups
+can be removed manually after confirming the new installation works.
+
+The current Neovim configuration does not enable an OmniSharp/C# language server;
+this installs the tool without changing editor features.
