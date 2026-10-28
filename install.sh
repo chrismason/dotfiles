@@ -1,9 +1,11 @@
 #!/bin/bash
 
-set -ex
+set -e
 
-if [ -z "$CODESPACES" ]; then
-    source setup.osx.sh
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
+
+if [ -z "${CODESPACES:-}" ]; then
+    source ./setup.osx.sh
 else
-    source setup.codespaces.sh
+    source ./setup.codespaces.sh
 fi

@@ -5,14 +5,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:"$HOME/.local/bin"
 export PATH=$PATH:"/home/linuxbrew/.linuxbrew/bin"
 
-export GOPROXY="https://goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
-export GOPRIVATE=" "
-export GONOPROXY=" "
-export GONOSUMDB="github.com/github/*"
-
 export GPG_TTY=$(tty)
-
-export TMP_USE_SYNCED_UI_MANIFEST=true
 
 ZSH_THEME="robbyrussell"
 
@@ -24,3 +17,11 @@ source $HOME/.aliases.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs --ignore-file "~/.ignore"'
 
 export GPG_TTY=$(tty)
+
+# Keep private shell configuration out of inherited xtrace output.
+() {
+    setopt localoptions noxtrace
+    if [[ -r "$HOME/.config/dotfiles-private/github.zsh" ]]; then
+        source "$HOME/.config/dotfiles-private/github.zsh"
+    fi
+}
